@@ -1,6 +1,7 @@
 #ifndef BRUGLESCO_MEMORY_MEMORY_H
 #define BRUGLESCO_MEMORY_MEMORY_H
 
+#include "Expressions.h"
 #include "GameScreen.h"
 #include "MainMenu.h"
 
@@ -9,14 +10,12 @@
 class Memory
 {
 public:
-	Memory();
-
 	void run();
 private:
-	sf::RenderWindow window;
+	sf::RenderWindow window{ sf::VideoMode(window_width, window_height), "Memory" };
 	MainMenu mainMenu;
 	GameScreen gameScreen;
-	bool playing;
+	bool playing{ false };
 
 	void input();
 
