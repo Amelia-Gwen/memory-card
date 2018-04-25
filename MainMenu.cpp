@@ -2,6 +2,7 @@
 
 MainMenu::MainMenu()
 {
+	//background.loadFromFile("");
 	playButton.setPosition(play_button_x, play_button_y);
 	sixPairs.setPosition(six_button_x, pair_button_y);
 	eightPairs.setPosition(eight_button_x, pair_button_y);
@@ -11,6 +12,7 @@ MainMenu::MainMenu()
 
 void MainMenu::draw(sf::RenderWindow& window)
 {
+	window.draw(backgroundSprite);
 	window.draw(playButton);
 	window.draw(sixPairs);
 	window.draw(eightPairs);

@@ -10,6 +10,8 @@
 class HUDisplay
 {
 public:
+	HUDisplay();
+
 	void draw(sf::RenderWindow& window);
 private:
 	sf::RectangleShape playerOneDisplay{ sf::Vector2f(display_width, display_height) };

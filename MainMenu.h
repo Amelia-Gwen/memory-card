@@ -12,6 +12,8 @@ public:
 
 	void draw(sf::RenderWindow& window);
 private:
+	sf::Texture menuBackground;
+	sf::Sprite backgroundSprite{ menuBackground, sf::IntRect(0, 0, window_width, window_height) };
 	sf::RectangleShape playButton{ sf::Vector2f(menu_button_width, menu_button_height) };
 	sf::RectangleShape sixPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
 	sf::RectangleShape eightPairs{ sf::Vector2f(menu_button_width, menu_button_height) };

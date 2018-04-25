@@ -28,7 +28,14 @@ constexpr float pair_button_y = 448.f;
 constexpr float game_button_width = 128.f;
 constexpr float game_button_height = 64.f;
 
+constexpr float pause_x = 1244.f;
+constexpr float reset_x = 1372.f;
+
+constexpr float display_x = 1244.f;
+constexpr float player_one_display_y = 64.f;
+constexpr float player_two_display_y = 432.f;
+
 constexpr float display_width = 256.f;
-constexpr float display_height = (window_height - game_button_height) / 2;
+constexpr float display_height = 368.f;
 
 #endif // !BRUGLESCO_MEMORY_EXPRESSIONS_H

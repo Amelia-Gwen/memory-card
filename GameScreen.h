@@ -9,8 +9,12 @@
 class GameScreen
 {
 public:
+	GameScreen();
+
 	void draw(sf::RenderWindow& window);
 private:
+	sf::Texture gameBackground;
+	sf::Sprite backgroundSprite{ gameBackground, sf::IntRect(0, 0, window_width, window_height) };
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::RectangleShape reset{ sf::Vector2f(game_button_width, game_button_height) };
 	HUDisplay hud;
