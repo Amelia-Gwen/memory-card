@@ -1,7 +1,7 @@
 # memory-card
 Basic memory card game
 
-This is a small personal practice project to practice OOP design principles, namely:
+This is a small personal project to practice OOP design principles, namely:
 
     -DRY
     -decoupling
