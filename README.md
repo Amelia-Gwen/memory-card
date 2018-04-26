@@ -7,3 +7,4 @@ This is a small personal project to practice OOP design principles, namely:
     -decoupling
     -encapsulation and data hiding
     -SRP
+    -indirection and abstraction
