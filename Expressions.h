@@ -38,4 +38,16 @@ constexpr float player_two_display_y = 432.f;
 constexpr float display_width = 256.f;
 constexpr float display_height = 368.f;
 
+constexpr float player_string_x = 1265.f;
+constexpr float player_one_string_y = 72.f;
+constexpr float player_two_string_y = 440.f;
+
+enum class DeckSize
+{
+	six,
+	eight,
+	twelve,
+	sixteen
+};
+
 #endif // !BRUGLESCO_MEMORY_EXPRESSIONS_H
