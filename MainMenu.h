@@ -2,14 +2,15 @@
 #define BRUGLESCO_MEMORY_MAINMENU_H
 
 #include "Expressions.h"
-#include "InputHandler.h"
 
-#include <SFML\Graphics.hpp>
+#include <C:\SFML\include\SFML\Graphics.hpp>
 
 class MainMenu
 {
 public:
 	MainMenu();
+
+	void selectPairs(DeckSize deckSize);
 
 	void input(sf::Vector2f mousePos);
 

@@ -3,9 +3,8 @@
 
 #include "Expressions.h"
 #include "HUDisplay.h"
-#include "InputHandler.h"
 
-#include <SFML\Graphics.hpp>
+#include <C:\SFML\include\SFML\Graphics.hpp>
 
 class GameScreen
 {

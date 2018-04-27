@@ -1,8 +1,6 @@
 #ifndef BRUGLESCO_MEMORY_EXPRESSIONS_H
 #define BRUGLESCO_MEMORY_EXPRESSIONS_H
 
-#include <SFML\Graphics.hpp>
-
 #include <fstream>
 #include <random>
 

@@ -3,10 +3,9 @@
 
 #include "Expressions.h"
 #include "GameScreen.h"
-#include "InputHandler.h"
 #include "MainMenu.h"
 
-#include <SFML\Graphics.hpp>
+#include <C:\SFML\include\SFML\Graphics.hpp>
 
 class Memory
 {
