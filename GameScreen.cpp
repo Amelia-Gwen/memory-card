@@ -1,7 +1,6 @@
 #include "GameScreen.h"
 
-GameScreen::GameScreen(InputHandler& inputHandler) :
-	m_inputHandler(inputHandler)
+GameScreen::GameScreen()
 {
 	//gameBackground.loadFromFile("");
 	pause.setPosition(pause_x, 0);
@@ -12,11 +11,11 @@ void GameScreen::input(sf::Vector2f mousePos)
 {
 	if (pause.getGlobalBounds().contains(mousePos))
 	{
-		m_inputHandler.pause();
+
 	}
 	else if (reset.getGlobalBounds().contains(mousePos))
 	{
-		m_inputHandler.resetGameState();
+
 	}
 }
 

@@ -16,9 +16,8 @@ public:
 	void run();
 private:
 	sf::RenderWindow window{ sf::VideoMode(window_width, window_height), "Memory" };
-	InputHandler inputHandler;
-	MainMenu mainMenu{ inputHandler };
-	GameScreen gameScreen{ inputHandler };
+	MainMenu mainMenu;
+	GameScreen gameScreen;
 	bool playing{ false };
 	bool paused{ false };
 	DeckSize deckSize{ DeckSize::six };

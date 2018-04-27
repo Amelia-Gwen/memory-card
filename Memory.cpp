@@ -47,30 +47,6 @@ void Memory::input()
 
 void Memory::update()
 {
-	if (!playing)
-	{
-		deckSize = inputHandler.readSize();
-		if (inputHandler.readPlay())
-		{
-			// set board
-			paused = false;
-			playing = true;
-			inputHandler.switchOff();
-		}
-	}
-	else
-	{
-		if (inputHandler.readPause())
-		{
-			paused = !paused;
-			inputHandler.switchOff();
-		}
-		if (inputHandler.readReset() && !paused)
-		{
-			// reset board and stats
-			inputHandler.switchOff();
-		}
-	}
 	// call necessary update functions
 }
 

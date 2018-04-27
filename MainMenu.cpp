@@ -1,7 +1,6 @@
 #include "MainMenu.h"
 
-MainMenu::MainMenu(InputHandler& inputHandler) :
-	m_inputHandler(inputHandler)
+MainMenu::MainMenu()
 {
 	//background.loadFromFile("");
 	playButton.setPosition(play_button_x, play_button_y);
@@ -15,23 +14,23 @@ void MainMenu::input(sf::Vector2f mousePos)
 {
 	if (playButton.getGlobalBounds().contains(mousePos))
 	{
-		m_inputHandler.play();
+
 	}
 	else if (sixPairs.getGlobalBounds().contains(mousePos))
 	{
-		m_inputHandler.six();
+
 	}
 	else if (eightPairs.getGlobalBounds().contains(mousePos))
 	{
-		m_inputHandler.eight();
+
 	}
 	else if (twelvePairs.getGlobalBounds().contains(mousePos))
 	{
-		m_inputHandler.twelve();
+
 	}
 	else if (sixteenPairs.getGlobalBounds().contains(mousePos))
 	{
-		m_inputHandler.sixteen();
+
 	}
 }
 
