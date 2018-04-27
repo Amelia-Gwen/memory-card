@@ -10,6 +10,11 @@ MainMenu::MainMenu()
 	sixteenPairs.setPosition(sixteen_button_x, pair_button_y);
 }
 
+void MainMenu::selectPairs(DeckSize deckSize)
+{
+
+}
+
 void MainMenu::input(sf::Vector2f mousePos)
 {
 	if (playButton.getGlobalBounds().contains(mousePos))
