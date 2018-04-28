@@ -7,11 +7,16 @@ GameScreen::GameScreen()
 	reset.setPosition(reset_x, 0);
 }
 
+void GameScreen::dealDeck()
+{
+	deck.set(deckSize);
+}
+
 void GameScreen::input(sf::Vector2f mousePos)
 {
 	if (pause.getGlobalBounds().contains(mousePos))
 	{
-
+		// pause
 	}
 	else if (reset.getGlobalBounds().contains(mousePos))
 	{

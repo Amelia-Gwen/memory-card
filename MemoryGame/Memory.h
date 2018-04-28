@@ -5,7 +5,7 @@
 #include "GameScreen.h"
 #include "MainMenu.h"
 
-#include <C:\SFML\include\SFML\Graphics.hpp>
+#include <SFML\Graphics.hpp>
 
 class Memory
 {

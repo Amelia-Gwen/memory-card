@@ -39,7 +39,7 @@
     <ClCompile Include="HUDisplay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
+    <ClCompile Include="Deck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -68,7 +68,7 @@
     <ClInclude Include="HUDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputHandler.h">
+    <ClInclude Include="Deck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

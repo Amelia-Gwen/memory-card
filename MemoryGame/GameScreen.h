@@ -1,15 +1,18 @@
 #ifndef BRUGLESCO_MEMORY_GAMESCREEN_H
 #define BRUGLESCO_MEMORY_GAMESCREEN_H
 
+#include "Deck.h"
 #include "Expressions.h"
 #include "HUDisplay.h"
 
-#include <C:\SFML\include\SFML\Graphics.hpp>
+#include <SFML\Graphics.hpp>
 
 class GameScreen
 {
 public:
 	GameScreen();
+
+	void dealDeck();
 
 	void input(sf::Vector2f mousePos);
 
@@ -20,6 +23,8 @@ private:
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::RectangleShape reset{ sf::Vector2f(game_button_width, game_button_height) };
 	HUDisplay hud;
+	Deck deck;
+	DeckSize deckSize{ DeckSize::six };
 };
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H

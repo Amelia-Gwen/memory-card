@@ -3,14 +3,12 @@
 
 #include "Expressions.h"
 
-#include <C:\SFML\include\SFML\Graphics.hpp>
+#include <SFML\Graphics.hpp>
 
 class MainMenu
 {
 public:
 	MainMenu();
-
-	void selectPairs(DeckSize deckSize);
 
 	void input(sf::Vector2f mousePos);
 
@@ -23,6 +21,9 @@ private:
 	sf::RectangleShape eightPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
 	sf::RectangleShape twelvePairs{ sf::Vector2f(menu_button_width, menu_button_height) };
 	sf::RectangleShape sixteenPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
+	DeckSize deckSize{ DeckSize::six };
+
+	void highlightPair();
 };
 
 #endif // !BRUGLESCO_MEMORY_MAINMENU_H

@@ -10,32 +10,31 @@ MainMenu::MainMenu()
 	sixteenPairs.setPosition(sixteen_button_x, pair_button_y);
 }
 
-void MainMenu::selectPairs(DeckSize deckSize)
-{
-
-}
-
 void MainMenu::input(sf::Vector2f mousePos)
 {
 	if (playButton.getGlobalBounds().contains(mousePos))
 	{
-
+		// send message to gamescreen - include deckSize
 	}
 	else if (sixPairs.getGlobalBounds().contains(mousePos))
 	{
-
+		deckSize = DeckSize::six;
+		highlightPair();
 	}
 	else if (eightPairs.getGlobalBounds().contains(mousePos))
 	{
-
+		deckSize = DeckSize::eight;
+		highlightPair();
 	}
 	else if (twelvePairs.getGlobalBounds().contains(mousePos))
 	{
-
+		deckSize = DeckSize::twelve;
+		highlightPair();
 	}
 	else if (sixteenPairs.getGlobalBounds().contains(mousePos))
 	{
-
+		deckSize = DeckSize::sixteen;
+		highlightPair();
 	}
 }
 
@@ -47,4 +46,9 @@ void MainMenu::draw(sf::RenderWindow& window)
 	window.draw(eightPairs);
 	window.draw(twelvePairs);
 	window.draw(sixteenPairs);
+}
+
+void MainMenu::highlightPair()
+{
+	// move textureRects around
 }

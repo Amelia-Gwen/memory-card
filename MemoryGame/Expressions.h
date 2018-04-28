@@ -6,7 +6,6 @@
 
 static std::random_device rd;
 static std::mt19937 generator(rd());
-static std::uniform_int_distribution<int> distribution(1, 6);
 static std::ofstream debuggStream("DebugLog.txt");
 
 constexpr unsigned window_width = 1500u;
