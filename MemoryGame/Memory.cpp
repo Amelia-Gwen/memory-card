@@ -32,7 +32,7 @@ void Memory::input()
 
 		if (event.type == sf::Event::MouseButtonPressed)
 		{
-			sf::Vector2f mousePos = sf::Vector2f(event.mouseButton.x, event.mouseButton.y);
+			sf::Vector2f mousePos = sf::Vector2f(static_cast<float>(event.mouseButton.x), static_cast<float>(event.mouseButton.y));
 			if (!playing)
 			{
 				mainMenu.input(mousePos);

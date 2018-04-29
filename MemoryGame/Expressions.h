@@ -41,10 +41,10 @@ constexpr float player_two_string_y = 440.f;
 
 enum class DeckSize
 {
-	six,
-	eight,
-	twelve,
-	sixteen
+	six = 6,
+	eight = 8,
+	twelve = 12,
+	sixteen = 16
 };
 
 #endif // !BRUGLESCO_MEMORY_EXPRESSIONS_H

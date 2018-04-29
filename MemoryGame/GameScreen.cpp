@@ -20,8 +20,9 @@ void GameScreen::input(sf::Vector2f mousePos)
 	}
 	else if (reset.getGlobalBounds().contains(mousePos))
 	{
-
+		deck.set(deckSize);
 	}
+	deck.input(mousePos);
 }
 
 void GameScreen::draw(sf::RenderWindow& window)
@@ -30,4 +31,5 @@ void GameScreen::draw(sf::RenderWindow& window)
 	window.draw(pause);
 	window.draw(reset);
 	hud.draw(window);
+	deck.draw(window);
 }

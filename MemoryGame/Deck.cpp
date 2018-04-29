@@ -1,34 +1,31 @@
 #include "Deck.h"
 
-Deck::Deck()
-{
-}
+#include <algorithm>
 
 void Deck::set(DeckSize deckSize)
 {
-	unsigned size = translateSize(deckSize);
+	deck.clear();
+	unsigned size = static_cast<unsigned>(deckSize);
 	for (unsigned i = 0; i < size; ++i)
 	{
 		deck.push_back(Card(i));
 		deck.push_back(Card(i));
 	}
-	std::random_shuffle(deck.begin(), deck.end(), generator);
+	std::shuffle(std::begin(deck), std::end(deck), generator);
 }
 
-unsigned Deck::translateSize(DeckSize deckSize)
+void Deck::input(sf::Vector2f mousePos)
 {
-	switch (deckSize)
+	for (unsigned i = 0; i < deck.size(); ++i)
 	{
-	case DeckSize::six:
-		return 6;
-	case DeckSize::eight:
-		return 8;
-	case DeckSize::twelve:
-		return 12;
-	case DeckSize::sixteen:
-		return 16;
-	default:
-		// should not reach. throw error or exception?
-		break;
+		deck[i].input(mousePos);
+	}
+}
+
+void Deck::draw(sf::RenderWindow& window)
+{
+	for (unsigned i = 0; i < deck.size(); ++i)
+	{
+		deck[i].draw(window);
 	}
 }

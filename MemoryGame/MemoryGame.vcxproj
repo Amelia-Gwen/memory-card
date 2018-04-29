@@ -27,7 +27,6 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Turn.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
@@ -38,7 +37,6 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Turn.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -138,6 +136,7 @@
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>winmm.lib;opengl32.lib;gdi32.lib;freetype.lib;jpeg.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

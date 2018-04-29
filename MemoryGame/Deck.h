@@ -4,20 +4,21 @@
 #include "Card.h"
 #include "Expressions.h"
 
-#include <algorithm>
-#include <random>
+#include <SFML\Graphics.hpp>
+
 #include <vector>
 
 class Deck
 {
 public:
-	Deck();
-
 	void set(DeckSize deckSize);
-private:
-	std::vector<Card> deck;
 
-	unsigned translateSize(DeckSize deckSize);
+	void input(sf::Vector2f mousePos);
+
+	void draw(sf::RenderWindow& window);
+private:
+	sf::Texture cardMap;
+	std::vector<Card> deck;
 };
 
 #endif // !BRUGLESCO_MEMORY_DECK_H

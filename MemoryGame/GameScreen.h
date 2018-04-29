@@ -4,8 +4,11 @@
 #include "Deck.h"
 #include "Expressions.h"
 #include "HUDisplay.h"
+#include "Player.h"
 
 #include <SFML\Graphics.hpp>
+
+#include <memory>
 
 class GameScreen
 {
@@ -22,9 +25,12 @@ private:
 	sf::Sprite backgroundSprite{ gameBackground, sf::IntRect(0, 0, window_width, window_height) };
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::RectangleShape reset{ sf::Vector2f(game_button_width, game_button_height) };
-	HUDisplay hud;
-	Deck deck;
 	DeckSize deckSize{ DeckSize::six };
+	HUDisplay hud;
+	Player player1;
+	Player player2;
+	std::unique_ptr<Player> activePlayer{ &player1 };
+	Deck deck;
 };
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H
