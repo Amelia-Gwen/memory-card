@@ -4,17 +4,34 @@ MainMenu::MainMenu()
 {
 	//background.loadFromFile("");
 	playButton.setPosition(play_button_x, play_button_y);
+	playButton.setFillColor(sf::Color::Black); // to be removed
 	sixPairs.setPosition(six_button_x, pair_button_y);
+	sixPairs.setFillColor(sf::Color::Black); // to be removed
 	eightPairs.setPosition(eight_button_x, pair_button_y);
+	eightPairs.setFillColor(sf::Color::Black); // to be removed
 	twelvePairs.setPosition(twelve_button_x, pair_button_y);
+	twelvePairs.setFillColor(sf::Color::Black); // to be removed
 	sixteenPairs.setPosition(sixteen_button_x, pair_button_y);
+	sixteenPairs.setFillColor(sf::Color::Black); // to be removed
+}
+
+bool MainMenu::getActivation() const
+{
+	return activated;
+}
+
+void MainMenu::reset()
+{
+	activated = false;
+	deckSize = DeckSize::six;
+
 }
 
 void MainMenu::input(sf::Vector2f mousePos)
 {
 	if (playButton.getGlobalBounds().contains(mousePos))
 	{
-		// send message to gamescreen - include deckSize
+		activated = true;
 	}
 	else if (sixPairs.getGlobalBounds().contains(mousePos))
 	{

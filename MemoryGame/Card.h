@@ -8,7 +8,7 @@ class Card
 public:
 	Card(unsigned matchNum);
 
-	bool input(sf::Vector2f mousePos);
+	void input(sf::Vector2f mousePos);
 
 	void draw(sf::RenderWindow& window);
 private:

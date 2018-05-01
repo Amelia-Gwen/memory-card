@@ -10,6 +10,10 @@ class MainMenu
 public:
 	MainMenu();
 
+	bool getActivation() const;
+
+	void reset();
+
 	void input(sf::Vector2f mousePos);
 
 	void draw(sf::RenderWindow& window);
@@ -22,6 +26,7 @@ private:
 	sf::RectangleShape twelvePairs{ sf::Vector2f(menu_button_width, menu_button_height) };
 	sf::RectangleShape sixteenPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
 	DeckSize deckSize{ DeckSize::six };
+	bool activated{ false };
 
 	void highlightPair();
 };

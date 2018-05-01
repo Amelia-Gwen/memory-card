@@ -47,7 +47,23 @@ void Memory::input()
 
 void Memory::update()
 {
-	// call necessary update functions
+	if (!playing)
+	{
+		if (mainMenu.getActivation())
+		{
+			mainMenu.reset();
+			gameScreen.play(deckSize);
+			playing = true;
+		}
+	}
+	else
+	{
+		if (gameScreen.getDeactivation())
+		{
+			gameScreen.reset();
+			playing = false;
+		}
+	}
 }
 
 void Memory::draw()

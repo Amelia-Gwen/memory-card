@@ -9,13 +9,18 @@
 #include <SFML\Graphics.hpp>
 
 #include <memory>
+#include <vector>
 
 class GameScreen
 {
 public:
 	GameScreen();
 
-	void dealDeck();
+	bool getDeactivation() const;
+
+	void reset();
+
+	void play(const DeckSize& size);
 
 	void input(sf::Vector2f mousePos);
 
@@ -24,13 +29,19 @@ private:
 	sf::Texture gameBackground;
 	sf::Sprite backgroundSprite{ gameBackground, sf::IntRect(0, 0, window_width, window_height) };
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
-	sf::RectangleShape reset{ sf::Vector2f(game_button_width, game_button_height) };
+	sf::RectangleShape returnToMain{ sf::Vector2f(game_button_width, game_button_height) };
 	DeckSize deckSize{ DeckSize::six };
 	HUDisplay hud;
-	Player player1;
-	Player player2;
-	std::unique_ptr<Player> activePlayer{ &player1 };
+	unsigned numPlayers{ 2 };
+	std::vector<Player> players;
+	Player* activePlayer{ nullptr };
 	Deck deck;
+	bool quit{ false };
+	bool paused{ false };
+
+	void dealDeck();
+
+	void trackTurn();
 };
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H

@@ -18,7 +18,6 @@ private:
 	MainMenu mainMenu;
 	GameScreen gameScreen;
 	bool playing{ false };
-	bool paused{ false };
 	DeckSize deckSize{ DeckSize::six };
 
 	void input();
