@@ -19,6 +19,8 @@ public:
 private:
 	sf::Texture cardMap;
 	std::vector<Card> deck;
+
+	void positionCards();
 };
 
 #endif // !BRUGLESCO_MEMORY_DECK_H
