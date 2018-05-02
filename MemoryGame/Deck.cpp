@@ -21,24 +21,24 @@ void Deck::set(DeckSize deckSize)
 
 void Deck::input(sf::Vector2f mousePos)
 {
-	for (std::vector<Card>::iterator it = deck.begin(); it != deck.end(); ++it)
+	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
 	{
-		it->input(mousePos);
+		iterator->input(mousePos);
 	}
 }
 
 void Deck::draw(sf::RenderWindow& window)
 {
-	for (std::vector<Card>::iterator it = deck.begin(); it != deck.end(); ++it)
+	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
 	{
-		it->draw(window);
+		iterator->draw(window);
 	}
 }
 
 void Deck::positionCards()
 {
 	unsigned rows = 0;
-	for (unsigned i = 2; i * i < deck.size(); ++i)
+	for (unsigned i = 2; i * i <= deck.size(); ++i)
 	{
 		if (deck.size() % i == 0)
 		{
@@ -47,9 +47,9 @@ void Deck::positionCards()
 	}
 	unsigned x = 0;
 	unsigned y = 0;
-	for (std::vector<Card>::iterator it = deck.begin(); it != deck.end(); ++it)
+	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
 	{
-		it->setPosition(base_card_x + x * card_x_spacer, base_card_y + y * card_y_spacer);
+		iterator->setPosition(base_card_x + x * card_x_spacer, base_card_y + y * card_y_spacer);
 		if (y < rows - 1)
 		{
 			++y;

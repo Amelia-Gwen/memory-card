@@ -39,12 +39,12 @@ constexpr float player_string_x = 1265.f;
 constexpr float player_one_string_y = 72.f;
 constexpr float player_two_string_y = 440.f;
 
-constexpr float base_card_x = 128.f;
-constexpr float base_card_y = 128.f;
-constexpr float card_width = 64.f;
-constexpr float card_height = 64.f;
-constexpr float card_x_spacer = 128.f;
-constexpr float card_y_spacer = 128.f;
+constexpr float base_card_x = 64.f;
+constexpr float base_card_y = 64.f;
+constexpr float card_width = 128.f;
+constexpr float card_height = 128.f;
+constexpr float card_x_spacer = 160.f;
+constexpr float card_y_spacer = 160.f;
 
 enum class DeckSize
 {

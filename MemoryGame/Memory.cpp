@@ -51,9 +51,9 @@ void Memory::update()
 	{
 		if (mainMenu.getActivation())
 		{
-			mainMenu.reset();
-			gameScreen.play(deckSize);
+			gameScreen.play(mainMenu.getSize());
 			playing = true;
+			mainMenu.reset();
 		}
 	}
 	else

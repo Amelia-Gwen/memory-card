@@ -30,7 +30,6 @@ private:
 	sf::Sprite backgroundSprite{ gameBackground, sf::IntRect(0, 0, window_width, window_height) };
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::RectangleShape returnToMain{ sf::Vector2f(game_button_width, game_button_height) };
-	DeckSize deckSize{ DeckSize::six };
 	HUDisplay hud;
 	unsigned numPlayers{ 2 };
 	std::vector<Player> players;
@@ -39,7 +38,7 @@ private:
 	bool quit{ false };
 	bool paused{ false };
 
-	void dealDeck();
+	void dealDeck(const DeckSize& size);
 
 	void trackTurn();
 };

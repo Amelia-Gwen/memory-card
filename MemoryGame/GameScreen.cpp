@@ -23,14 +23,13 @@ void GameScreen::reset()
 
 void GameScreen::play(const DeckSize& size)
 {
-	deckSize = size;
 	players.clear();
 	for (unsigned i = 0; i < numPlayers; ++i)
 	{
 		players.push_back(Player());
 	}
 	activePlayer = &players[0];
-	dealDeck();
+	dealDeck(size);
 	// distribute deck
 }
 
@@ -56,9 +55,9 @@ void GameScreen::draw(sf::RenderWindow& window)
 	deck.draw(window);
 }
 
-void GameScreen::dealDeck()
+void GameScreen::dealDeck(const DeckSize& size)
 {
-	deck.set(deckSize);
+	deck.set(size);
 }
 
 void GameScreen::trackTurn()

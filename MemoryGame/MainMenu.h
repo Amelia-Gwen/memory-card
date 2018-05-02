@@ -12,6 +12,8 @@ public:
 
 	bool getActivation() const;
 
+	DeckSize getSize() const;
+
 	void reset();
 
 	void input(sf::Vector2f mousePos);

@@ -20,6 +20,11 @@ bool MainMenu::getActivation() const
 	return activated;
 }
 
+DeckSize MainMenu::getSize() const
+{
+	return deckSize;
+}
+
 void MainMenu::reset()
 {
 	activated = false;
