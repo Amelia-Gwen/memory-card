@@ -8,3 +8,5 @@ This is a small personal project to practice OOP design principles, namely:
     -encapsulation and data hiding
     -SRP
     -indirection and abstraction
+
+Built with SFML 4.2.4
