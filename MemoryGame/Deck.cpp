@@ -45,19 +45,26 @@ void Deck::positionCards()
 			rows = i;
 		}
 	}
-	unsigned x = 0;
-	unsigned y = 0;
+	unsigned columns = deck.size() / rows;
+
+	float padding_x = (canvas_width - columns * 128.f) / (columns + 1);
+	float padding_y = (canvas_height - rows * 128.f) / (rows + 1);
+	float x = padding_x;
+	float y = padding_y;
+	unsigned counter = 1;
 	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
 	{
-		iterator->setPosition(base_card_x + x * card_x_spacer, base_card_y + y * card_y_spacer);
-		if (y < rows - 1)
+		iterator->setPosition(x, y);
+		if (counter < columns)
 		{
-			++y;
+			++counter;
+			x += padding_x + 128.f;
 		}
 		else
 		{
-			y = 0;
-			++x;
+			counter = 1;
+			x = padding_x;
+			y += padding_y + 128.f;
 		}
 	}
 }

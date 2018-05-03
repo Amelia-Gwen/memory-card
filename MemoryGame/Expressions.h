@@ -35,12 +35,15 @@ constexpr float player_two_display_y = 432.f;
 constexpr float display_width = 256.f;
 constexpr float display_height = 368.f;
 
+constexpr float canvas_width = window_width - display_width;
+constexpr float canvas_height = 800.f; // this should match window height
+
 constexpr float player_string_x = 1265.f;
 constexpr float player_one_string_y = 72.f;
 constexpr float player_two_string_y = 440.f;
 
-constexpr float base_card_x = 64.f;
-constexpr float base_card_y = 64.f;
+constexpr float base_card_x = 32.f;
+constexpr float base_card_y = 32.f;
 constexpr float card_width = 128.f;
 constexpr float card_height = 128.f;
 constexpr float card_x_spacer = 160.f;
