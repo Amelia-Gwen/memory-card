@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-void Deck::set(DeckSize deckSize)
+void Deck::set(const DeckSize& deckSize)
 {
 	deck.clear();
 	unsigned k = 0;
@@ -19,7 +19,42 @@ void Deck::set(DeckSize deckSize)
 	positionCards();
 }
 
-void Deck::input(sf::Vector2f mousePos)
+CardState Deck::checkCards(float x, float y)
+{
+	unsigned count = 0;
+	std::vector<Card*> cards;
+	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
+	{
+		if (iterator->checkState() == CardState::checking)
+		{
+			++count;
+			cards.push_back(&*iterator);
+		}
+	}
+
+	if (count == 2)
+	{
+		if (cards[0]->getMatch() == cards[1]->getMatch())
+		{
+			cards[0]->match(x, y);
+			cards[1]->match(x, y);
+			return CardState::matched;
+		}
+		else
+		{
+			// wait before resetting
+			cards[0]->reset();
+			cards[1]->reset();
+			return CardState::unmatched;
+		}
+	}
+	else
+	{
+		return CardState::checking;
+	}
+}
+
+void Deck::input(const sf::Vector2f& mousePos)
 {
 	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
 	{
@@ -52,19 +87,20 @@ void Deck::positionCards()
 	float x = padding_x;
 	float y = padding_y;
 	unsigned counter = 1;
+
 	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
 	{
 		iterator->setPosition(x, y);
 		if (counter < columns)
 		{
 			++counter;
-			x += padding_x + 128.f;
+			x += padding_x + card_width;
 		}
 		else
 		{
 			counter = 1;
 			x = padding_x;
-			y += padding_y + 128.f;
+			y += padding_y + card_height;
 		}
 	}
 }

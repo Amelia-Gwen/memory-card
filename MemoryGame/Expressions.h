@@ -8,8 +8,8 @@ static std::random_device rd;
 static std::mt19937 generator(rd());
 static std::ofstream debuggStream("DebugLog.txt");
 
-constexpr unsigned window_width = 1500u;
-constexpr unsigned window_height = 800u;
+constexpr unsigned screen_width = 1500u;
+constexpr unsigned screen_height = 800u;
 
 constexpr float menu_button_width = 256.f;
 constexpr float menu_button_height = 256.f;
@@ -35,19 +35,20 @@ constexpr float player_two_display_y = 432.f;
 constexpr float display_width = 256.f;
 constexpr float display_height = 368.f;
 
-constexpr float canvas_width = window_width - display_width;
-constexpr float canvas_height = 800.f; // this should match window height
+constexpr float canvas_width = screen_width - display_width;
+constexpr float canvas_height = static_cast<float>(screen_height);
 
 constexpr float player_string_x = 1265.f;
 constexpr float player_one_string_y = 72.f;
 constexpr float player_two_string_y = 440.f;
 
-constexpr float base_card_x = 32.f;
-constexpr float base_card_y = 32.f;
+constexpr float player_card_x = 1265.f;
+constexpr float player_card_x_offset = 5.f;
+constexpr float player_card_y = 94.f;
+constexpr float player_card_y_offset = 368.f;
+
 constexpr float card_width = 128.f;
 constexpr float card_height = 128.f;
-constexpr float card_x_spacer = 160.f;
-constexpr float card_y_spacer = 160.f;
 
 enum class DeckSize
 {
@@ -55,6 +56,13 @@ enum class DeckSize
 	eight = 8,
 	twelve = 12,
 	sixteen = 16
+};
+
+enum class CardState
+{
+	unmatched,
+	checking,
+	matched
 };
 
 #endif // !BRUGLESCO_MEMORY_EXPRESSIONS_H

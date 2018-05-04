@@ -14,11 +14,20 @@ public:
 
 	void passTexture(const sf::Texture& texture);
 
-	void input(sf::Vector2f mousePos);
+	CardState checkState() const;
+
+	unsigned getMatch() const;
+
+	void match(float x, float y);
+
+	void reset();
+
+	void input(const sf::Vector2f& mousePos);
 
 	void draw(sf::RenderWindow& window);
 private:
 	sf::RectangleShape face{ sf::Vector2f(card_width, card_height) };
+	CardState cardState{ CardState::unmatched };
 	unsigned matchNum;
 	bool faceUp{ false };
 };

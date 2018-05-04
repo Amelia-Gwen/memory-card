@@ -11,9 +11,11 @@
 class Deck
 {
 public:
-	void set(DeckSize deckSize);
+	void set(const DeckSize& deckSize);
 
-	void input(sf::Vector2f mousePos);
+	CardState checkCards(float x, float y);
+
+	void input(const sf::Vector2f& mousePos);
 
 	void draw(sf::RenderWindow& window);
 private:

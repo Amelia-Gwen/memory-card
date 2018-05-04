@@ -14,7 +14,7 @@ public:
 
 	void run();
 private:
-	sf::RenderWindow window{ sf::VideoMode(window_width, window_height), "Memory" };
+	sf::RenderWindow window{ sf::VideoMode(screen_width, screen_height), "Memory" };
 	MainMenu mainMenu;
 	GameScreen gameScreen;
 	bool playing{ false };

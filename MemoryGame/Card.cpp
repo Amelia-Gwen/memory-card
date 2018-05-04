@@ -16,11 +16,34 @@ void Card::passTexture(const sf::Texture& texture)
 	face.setTexture(&texture);
 }
 
-void Card::input(sf::Vector2f mousePos)
+CardState Card::checkState() const
+{
+	return cardState;
+}
+
+unsigned Card::getMatch() const
+{
+	return matchNum;
+}
+
+void Card::match(float x, float y)
+{
+	cardState = CardState::matched;
+	face.setPosition(x, y);
+}
+
+void Card::reset()
+{
+	cardState = CardState::unmatched;
+	faceUp = false;
+}
+
+void Card::input(const sf::Vector2f& mousePos)
 {
 	if (!faceUp && face.getGlobalBounds().contains(mousePos))
 	{
-		// flip
+		cardState = CardState::checking;
+		faceUp = true;
 	}
 }
 

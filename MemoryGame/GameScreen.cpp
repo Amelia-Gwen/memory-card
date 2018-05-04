@@ -26,14 +26,14 @@ void GameScreen::play(const DeckSize& size)
 	players.clear();
 	for (unsigned i = 0; i < numPlayers; ++i)
 	{
-		players.push_back(Player());
+		players.push_back(Player(i));
 	}
 	activePlayer = &players[0];
 	dealDeck(size);
 	// distribute deck
 }
 
-void GameScreen::input(sf::Vector2f mousePos)
+void GameScreen::input(const sf::Vector2f& mousePos)
 {
 	if (pause.getGlobalBounds().contains(mousePos))
 	{
@@ -44,6 +44,20 @@ void GameScreen::input(sf::Vector2f mousePos)
 		quit = true;
 	}
 	deck.input(mousePos);
+}
+
+void GameScreen::update()
+{
+	if (deck.checkCards(activePlayer->getPile().x, activePlayer->getPile().y) == CardState::matched)
+	{
+		activePlayer->shiftPile();
+		// inc score
+	}
+	else if (deck.checkCards(activePlayer->getPile().x, activePlayer->getPile().y) == CardState::matched)
+	{
+		// wait before resetting
+		// change turns
+	}
 }
 
 void GameScreen::draw(sf::RenderWindow& window)
@@ -58,8 +72,4 @@ void GameScreen::draw(sf::RenderWindow& window)
 void GameScreen::dealDeck(const DeckSize& size)
 {
 	deck.set(size);
-}
-
-void GameScreen::trackTurn()
-{
 }

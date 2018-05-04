@@ -32,7 +32,7 @@ void MainMenu::reset()
 
 }
 
-void MainMenu::input(sf::Vector2f mousePos)
+void MainMenu::input(const sf::Vector2f& mousePos)
 {
 	if (playButton.getGlobalBounds().contains(mousePos))
 	{

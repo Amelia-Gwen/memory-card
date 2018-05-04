@@ -58,10 +58,11 @@ void Memory::update()
 	}
 	else
 	{
+		gameScreen.update();
 		if (gameScreen.getDeactivation())
 		{
-			gameScreen.reset();
 			playing = false;
+			gameScreen.reset();
 		}
 	}
 }

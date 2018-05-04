@@ -22,12 +22,14 @@ public:
 
 	void play(const DeckSize& size);
 
-	void input(sf::Vector2f mousePos);
+	void input(const sf::Vector2f& mousePos);
+
+	void update();
 
 	void draw(sf::RenderWindow& window);
 private:
 	sf::Texture gameBackground;
-	sf::Sprite backgroundSprite{ gameBackground, sf::IntRect(0, 0, window_width, window_height) };
+	sf::Sprite backgroundSprite{ gameBackground, sf::IntRect(0, 0, screen_width, screen_height) };
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::RectangleShape returnToMain{ sf::Vector2f(game_button_width, game_button_height) };
 	HUDisplay hud;
@@ -39,8 +41,6 @@ private:
 	bool paused{ false };
 
 	void dealDeck(const DeckSize& size);
-
-	void trackTurn();
 };
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H
