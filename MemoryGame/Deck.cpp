@@ -9,26 +9,23 @@ void Deck::set(const DeckSize& deckSize)
 	for (unsigned i = 0; i < static_cast<unsigned>(deckSize); ++i)
 	{
 		deck.push_back(Card(i));
-		deck[k].passTexture(cardMap);
 		++k;
 		deck.push_back(Card(i));
-		deck[k].passTexture(cardMap);
 		++k;
 	}
 	std::shuffle(std::begin(deck), std::end(deck), generator);
-	positionCards();
 }
 
-CardState Deck::checkCards(float x, float y)
+CardState Deck::checkCards()
 {
 	unsigned count = 0;
 	std::vector<Card*> cards;
-	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
+	for (std::vector<Card>::iterator card = deck.begin(); card != deck.end(); ++card)
 	{
-		if (iterator->checkState() == CardState::checking)
+		if (card->checkState() == CardState::checking)
 		{
 			++count;
-			cards.push_back(&*iterator);
+			cards.push_back(&*card);
 		}
 	}
 
@@ -36,8 +33,8 @@ CardState Deck::checkCards(float x, float y)
 	{
 		if (cards[0]->getMatch() == cards[1]->getMatch())
 		{
-			cards[0]->match(x, y);
-			cards[1]->match(x, y);
+			cards[0]->match();
+			cards[1]->match();
 			return CardState::matched;
 		}
 		else
@@ -54,53 +51,12 @@ CardState Deck::checkCards(float x, float y)
 	}
 }
 
-void Deck::input(const sf::Vector2f& mousePos)
+std::vector<Card> Deck::getCards() const
 {
-	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
-	{
-		iterator->input(mousePos);
-	}
+	return deck;
 }
 
-void Deck::draw(sf::RenderWindow& window)
+void Deck::clear()
 {
-	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
-	{
-		iterator->draw(window);
-	}
-}
-
-void Deck::positionCards()
-{
-	unsigned rows = 0;
-	for (unsigned i = 2; i * i <= deck.size(); ++i)
-	{
-		if (deck.size() % i == 0)
-		{
-			rows = i;
-		}
-	}
-	unsigned columns = deck.size() / rows;
-
-	float padding_x = (canvas_width - columns * 128.f) / (columns + 1);
-	float padding_y = (canvas_height - rows * 128.f) / (rows + 1);
-	float x = padding_x;
-	float y = padding_y;
-	unsigned counter = 1;
-
-	for (std::vector<Card>::iterator iterator = deck.begin(); iterator != deck.end(); ++iterator)
-	{
-		iterator->setPosition(x, y);
-		if (counter < columns)
-		{
-			++counter;
-			x += padding_x + card_width;
-		}
-		else
-		{
-			counter = 1;
-			x = padding_x;
-			y += padding_y + card_height;
-		}
-	}
+	deck.clear();
 }

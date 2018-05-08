@@ -1,26 +1,21 @@
 #ifndef BRUGLESCO_MEMORY_GAMESCREEN_H
 #define BRUGLESCO_MEMORY_GAMESCREEN_H
 
-#include "Deck.h"
+#include "Card.h"
 #include "Expressions.h"
 #include "HUDisplay.h"
-#include "Player.h"
+#include "ModelData.h"
 
 #include <SFML\Graphics.hpp>
 
-#include <memory>
 #include <vector>
 
 class GameScreen
 {
 public:
-	GameScreen();
+	GameScreen(ModelData& data);
 
-	bool getDeactivation() const;
-
-	void reset();
-
-	void play(const DeckSize& size);
+	void setGame();
 
 	void input(const sf::Vector2f& mousePos);
 
@@ -28,19 +23,20 @@ public:
 
 	void draw(sf::RenderWindow& window);
 private:
+	ModelData & data;
 	sf::Texture gameBackground;
+	sf::Texture cardMap;
+	sf::Texture gameButtonMap;
 	sf::Sprite backgroundSprite{ gameBackground, sf::IntRect(0, 0, screen_width, screen_height) };
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::RectangleShape returnToMain{ sf::Vector2f(game_button_width, game_button_height) };
 	HUDisplay hud;
-	unsigned numPlayers{ 2 };
-	std::vector<Player> players;
-	Player* activePlayer{ nullptr };
-	Deck deck;
-	bool quit{ false };
+	std::vector<sf::RectangleShape> deck;
 	bool paused{ false };
 
-	void dealDeck(const DeckSize& size);
+	void makeCards();
+
+	void positionCards();
 };
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H

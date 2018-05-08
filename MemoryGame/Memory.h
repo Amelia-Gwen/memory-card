@@ -2,23 +2,19 @@
 #define BRUGLESCO_MEMORY_MEMORY_H
 
 #include "Expressions.h"
-#include "GameScreen.h"
-#include "MainMenu.h"
+#include "ModelData.h"
+#include "Viewport.h"
 
 #include <SFML\Graphics.hpp>
 
 class Memory
 {
 public:
-	Memory();
-
 	void run();
 private:
-	sf::RenderWindow window{ sf::VideoMode(screen_width, screen_height), "Memory" };
-	MainMenu mainMenu;
-	GameScreen gameScreen;
-	bool playing{ false };
-	DeckSize deckSize{ DeckSize::six };
+	ModelData data;
+	Viewport view{ data };
+	bool playing{ true };
 
 	void input();
 

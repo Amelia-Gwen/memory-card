@@ -24,9 +24,11 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="HUDisplay.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="ModelData.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
@@ -34,9 +36,11 @@
     <ClInclude Include="Expressions.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="HUDisplay.h" />
-    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Memory.h" />
+    <ClInclude Include="MenuScreen.h" />
+    <ClInclude Include="ModelData.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Viewport.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -10,25 +10,18 @@ class Card
 public:
 	Card(unsigned matchNum);
 
-	void setPosition(float x, float y);
-
-	void passTexture(const sf::Texture& texture);
-
-	CardState checkState() const;
-
 	unsigned getMatch() const;
 
-	void match(float x, float y);
+	CardState checkState();
+
+	void flip();
+
+	void match();
 
 	void reset();
-
-	void input(const sf::Vector2f& mousePos);
-
-	void draw(sf::RenderWindow& window);
 private:
-	sf::RectangleShape face{ sf::Vector2f(card_width, card_height) };
-	CardState cardState{ CardState::unmatched };
 	unsigned matchNum;
+	CardState cardState{ CardState::unmatched };
 	bool faceUp{ false };
 };
 

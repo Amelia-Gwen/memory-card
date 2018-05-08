@@ -1,66 +1,62 @@
-#include "MainMenu.h"
+#include "MenuScreen.h"
 
-MainMenu::MainMenu()
+MenuScreen::MenuScreen(ModelData& data, GameScreen& game) :
+	data{ data },
+	game{ game }
 {
 	//background.loadFromFile("");
 	playButton.setPosition(play_button_x, play_button_y);
+	playButton.setTexture(&menuMap);
+	//playButton.setTextureRect(sf::IntRect());
 	playButton.setFillColor(sf::Color::Black); // to be removed
 	sixPairs.setPosition(six_button_x, pair_button_y);
+	sixPairs.setTexture(&menuMap);
+	//sixPairs.setTextureRect(sf::IntRect());
 	sixPairs.setFillColor(sf::Color::Black); // to be removed
 	eightPairs.setPosition(eight_button_x, pair_button_y);
+	eightPairs.setTexture(&menuMap);
+	//eightPairs.setTextureRect(sf::IntRect());
 	eightPairs.setFillColor(sf::Color::Black); // to be removed
 	twelvePairs.setPosition(twelve_button_x, pair_button_y);
+	twelvePairs.setTexture(&menuMap);
+	//twelvePairs.setTextureRect(sf::IntRect());
 	twelvePairs.setFillColor(sf::Color::Black); // to be removed
 	sixteenPairs.setPosition(sixteen_button_x, pair_button_y);
+	sixteenPairs.setTexture(&menuMap);
+	//sixteenPairs.setTextureRect(sf::IntRect());
 	sixteenPairs.setFillColor(sf::Color::Black); // to be removed
 }
 
-bool MainMenu::getActivation() const
-{
-	return activated;
-}
-
-DeckSize MainMenu::getSize() const
-{
-	return deckSize;
-}
-
-void MainMenu::reset()
-{
-	activated = false;
-	deckSize = DeckSize::six;
-
-}
-
-void MainMenu::input(const sf::Vector2f& mousePos)
+void MenuScreen::input(const sf::Vector2f& mousePos)
 {
 	if (playButton.getGlobalBounds().contains(mousePos))
 	{
-		activated = true;
+		data.play();
+		game.setGame();
 	}
 	else if (sixPairs.getGlobalBounds().contains(mousePos))
 	{
-		deckSize = DeckSize::six;
-		highlightPair();
+		data.setSize(DeckSize::six);
+		highlight();
 	}
 	else if (eightPairs.getGlobalBounds().contains(mousePos))
 	{
-		deckSize = DeckSize::eight;
-		highlightPair();
+		data.setSize(DeckSize::eight);
+		highlight();
 	}
 	else if (twelvePairs.getGlobalBounds().contains(mousePos))
 	{
-		deckSize = DeckSize::twelve;
-		highlightPair();
+		data.setSize(DeckSize::twelve);
+		highlight();
 	}
 	else if (sixteenPairs.getGlobalBounds().contains(mousePos))
 	{
-		deckSize = DeckSize::sixteen;
-		highlightPair();
+		data.setSize(DeckSize::sixteen);
+		highlight();
 	}
 }
 
-void MainMenu::draw(sf::RenderWindow& window)
+void MenuScreen::draw(sf::RenderWindow& window)
 {
 	window.draw(backgroundSprite);
 	window.draw(playButton);
@@ -70,7 +66,7 @@ void MainMenu::draw(sf::RenderWindow& window)
 	window.draw(sixteenPairs);
 }
 
-void MainMenu::highlightPair()
+void MenuScreen::highlight()
 {
-	// move textureRects around
+	// move textures
 }

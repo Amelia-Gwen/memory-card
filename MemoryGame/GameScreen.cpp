@@ -1,36 +1,23 @@
 #include "GameScreen.h"
 
-GameScreen::GameScreen()
+GameScreen::GameScreen(ModelData& data) :
+	data{ data }
 {
 	//gameBackground.loadFromFile("");
 	pause.setPosition(pause_x, 0);
+	pause.setTexture(&gameButtonMap);
+	//pause.setTextureRect(sf::IntRect());
 	pause.setFillColor(sf::Color::Black); // to be removed
 	returnToMain.setPosition(reset_x, 0);
+	returnToMain.setTexture(&gameButtonMap);
+	//returnToMain.setTextureRect(sf::IntRect());
 	returnToMain.setFillColor(sf::Color::Black); // to be removed
 }
 
-bool GameScreen::getDeactivation() const
+void GameScreen::setGame()
 {
-	return quit;
-}
-
-void GameScreen::reset()
-{
-	paused = false;
-	quit = false;
-	activePlayer = nullptr;
-}
-
-void GameScreen::play(const DeckSize& size)
-{
-	players.clear();
-	for (unsigned i = 0; i < numPlayers; ++i)
-	{
-		players.push_back(Player(i));
-	}
-	activePlayer = &players[0];
-	dealDeck(size);
-	// distribute deck
+	makeCards();
+	positionCards();
 }
 
 void GameScreen::input(const sf::Vector2f& mousePos)
@@ -39,25 +26,26 @@ void GameScreen::input(const sf::Vector2f& mousePos)
 	{
 		paused = !paused;
 	}
-	else if (returnToMain.getGlobalBounds().contains(mousePos))
+	else if (!paused && returnToMain.getGlobalBounds().contains(mousePos))
 	{
-		quit = true;
+		data.quit();
 	}
-	deck.input(mousePos);
+	else if (!paused)
+	{
+		for (std::pair<std::vector<Card>::iterator, std::vector<sf::RectangleShape>::iterator> card(data.getDeck().begin(), deck.begin());
+			card.first != data.getDeck().end() && card.second != deck.end(); ++card.first, ++card.second)
+		{
+			if (card.second->getGlobalBounds().contains(mousePos))
+			{
+				card.first->flip();
+			}
+		}
+	}
 }
 
 void GameScreen::update()
 {
-	if (deck.checkCards(activePlayer->getPile().x, activePlayer->getPile().y) == CardState::matched)
-	{
-		activePlayer->shiftPile();
-		// inc score
-	}
-	else if (deck.checkCards(activePlayer->getPile().x, activePlayer->getPile().y) == CardState::matched)
-	{
-		// wait before resetting
-		// change turns
-	}
+	// remove if not needed
 }
 
 void GameScreen::draw(sf::RenderWindow& window)
@@ -65,11 +53,54 @@ void GameScreen::draw(sf::RenderWindow& window)
 	window.draw(backgroundSprite);
 	window.draw(pause);
 	window.draw(returnToMain);
-	hud.draw(window);
-	deck.draw(window);
+	for (std::vector<sf::RectangleShape>::iterator card = deck.begin(); card != deck.end(); ++card)
+	{
+		window.draw(*card);
+	}
 }
 
-void GameScreen::dealDeck(const DeckSize& size)
+void GameScreen::makeCards()
 {
-	deck.set(size);
+	unsigned k = 0;
+	for (std::vector<Card>::iterator card = data.getDeck().begin(); card != data.getDeck.end(); ++card)
+	{
+		deck.push_back(sf::RectangleShape(sf::Vector2f(card_width, card_height)));
+		deck[k].setTexture(&cardMap);
+		//deck[k].setTextureRect(sf::IntRect());
+		++k;
+	}
+}
+
+void GameScreen::positionCards()
+{
+	unsigned rows = 0;
+	for (unsigned i = 2; i * i <= deck.size(); ++i)
+	{
+		if (deck.size() % i == 0)
+		{
+			rows = i;
+		}
+	}
+	unsigned columns = deck.size() / rows;
+
+	float padding_x = (canvas_width - columns * 128.f) / (columns + 1);
+	float padding_y = (canvas_height - rows * 128.f) / (rows + 1);
+	float x = padding_x;
+	float y = padding_y;
+	unsigned counter = 1;
+	for (std::vector<sf::RectangleShape>::iterator card = deck.begin(); card != deck.end(); ++card)
+	{
+		card->setPosition(x, y);
+		if (counter < columns)
+		{
+			++counter;
+			x += padding_x + card_width;
+		}
+		else
+		{
+			counter = 1;
+			x = padding_x;
+			y += padding_y + card_height;
+		}
+	}
 }

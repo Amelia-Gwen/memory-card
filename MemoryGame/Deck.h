@@ -4,8 +4,6 @@
 #include "Card.h"
 #include "Expressions.h"
 
-#include <SFML\Graphics.hpp>
-
 #include <vector>
 
 class Deck
@@ -13,16 +11,13 @@ class Deck
 public:
 	void set(const DeckSize& deckSize);
 
-	CardState checkCards(float x, float y);
+	CardState checkCards();
 
-	void input(const sf::Vector2f& mousePos);
+	std::vector<Card> getCards() const;
 
-	void draw(sf::RenderWindow& window);
+	void clear();
 private:
-	sf::Texture cardMap;
 	std::vector<Card> deck;
-
-	void positionCards();
 };
 
 #endif // !BRUGLESCO_MEMORY_DECK_H
