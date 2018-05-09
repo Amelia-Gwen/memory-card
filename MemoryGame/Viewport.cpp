@@ -48,6 +48,8 @@ void Viewport::draw()
 {
 	if (isOpen())
 	{
+		window.clear();
+
 		if (data.isMenu())
 		{
 			menu.draw(window);
@@ -56,5 +58,7 @@ void Viewport::draw()
 		{
 			game.draw(window);
 		}
+
+		window.display();
 	}
 }

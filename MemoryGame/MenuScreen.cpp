@@ -6,23 +6,23 @@ MenuScreen::MenuScreen(ModelData& data, GameScreen& game) :
 {
 	//background.loadFromFile("");
 	playButton.setPosition(play_button_x, play_button_y);
-	playButton.setTexture(&menuMap);
+	//playButton.setTexture(&menuMap);
 	//playButton.setTextureRect(sf::IntRect());
 	playButton.setFillColor(sf::Color::Black); // to be removed
 	sixPairs.setPosition(six_button_x, pair_button_y);
-	sixPairs.setTexture(&menuMap);
+	//sixPairs.setTexture(&menuMap);
 	//sixPairs.setTextureRect(sf::IntRect());
 	sixPairs.setFillColor(sf::Color::Black); // to be removed
 	eightPairs.setPosition(eight_button_x, pair_button_y);
-	eightPairs.setTexture(&menuMap);
+	//eightPairs.setTexture(&menuMap);
 	//eightPairs.setTextureRect(sf::IntRect());
 	eightPairs.setFillColor(sf::Color::Black); // to be removed
 	twelvePairs.setPosition(twelve_button_x, pair_button_y);
-	twelvePairs.setTexture(&menuMap);
+	//twelvePairs.setTexture(&menuMap);
 	//twelvePairs.setTextureRect(sf::IntRect());
 	twelvePairs.setFillColor(sf::Color::Black); // to be removed
 	sixteenPairs.setPosition(sixteen_button_x, pair_button_y);
-	sixteenPairs.setTexture(&menuMap);
+	//sixteenPairs.setTexture(&menuMap);
 	//sixteenPairs.setTextureRect(sf::IntRect());
 	sixteenPairs.setFillColor(sf::Color::Black); // to be removed
 }

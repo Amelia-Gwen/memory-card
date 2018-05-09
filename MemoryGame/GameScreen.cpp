@@ -53,6 +53,7 @@ void GameScreen::draw(sf::RenderWindow& window)
 	window.draw(backgroundSprite);
 	window.draw(pause);
 	window.draw(returnToMain);
+	hud.draw(window);
 	for (std::vector<sf::RectangleShape>::iterator card = deck.begin(); card != deck.end(); ++card)
 	{
 		window.draw(*card);
@@ -61,12 +62,14 @@ void GameScreen::draw(sf::RenderWindow& window)
 
 void GameScreen::makeCards()
 {
+	deck.clear();
 	unsigned k = 0;
-	for (std::vector<Card>::iterator card = data.getDeck().begin(); card != data.getDeck.end(); ++card)
+	for (std::vector<Card>::iterator card = data.getDeck().begin(); card != data.getDeck().end(); ++card)
 	{
 		deck.push_back(sf::RectangleShape(sf::Vector2f(card_width, card_height)));
 		deck[k].setTexture(&cardMap);
 		//deck[k].setTextureRect(sf::IntRect());
+		deck[k].setFillColor(sf::Color::Black); // to be removed
 		++k;
 	}
 }

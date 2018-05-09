@@ -13,7 +13,7 @@ public:
 
 	CardState checkCards();
 
-	std::vector<Card> getCards() const;
+	std::vector<Card>& getCards();
 
 	void clear();
 private:

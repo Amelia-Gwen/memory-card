@@ -10,7 +10,7 @@ void ModelData::setSize(const DeckSize & size)
 	deckSize = size;
 }
 
-std::vector<Card> ModelData::getDeck() const
+std::vector<Card>& ModelData::getDeck()
 {
 	return deck.getCards();
 }

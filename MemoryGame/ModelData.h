@@ -12,7 +12,7 @@ public:
 
 	void setSize(const DeckSize& size);
 
-	std::vector<Card> getDeck() const;
+	std::vector<Card>& getDeck();
 
 	void play();
 

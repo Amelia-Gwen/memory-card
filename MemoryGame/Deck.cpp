@@ -51,7 +51,7 @@ CardState Deck::checkCards()
 	}
 }
 
-std::vector<Card> Deck::getCards() const
+std::vector<Card>& Deck::getCards()
 {
 	return deck;
 }
