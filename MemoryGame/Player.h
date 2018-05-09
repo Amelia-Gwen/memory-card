@@ -10,11 +10,14 @@ class Player
 public:
 	Player(unsigned player);
 
-	void shiftPile();
+	void scorePoint();
 
-	sf::Vector2f getPile() const;
+	unsigned getScore() const;
+
+	unsigned getTurn() const;
 private:
-	sf::Vector2f matchPile;
+	unsigned score{ 0 };
+	unsigned turn;
 };
 
 #endif // !BRUGLESCO_MEMORY_PLAYER_H

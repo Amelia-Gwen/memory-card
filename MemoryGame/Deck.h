@@ -3,6 +3,7 @@
 
 #include "Card.h"
 #include "Expressions.h"
+#include "Player.h"
 
 #include <vector>
 
@@ -12,6 +13,8 @@ public:
 	void set(const DeckSize& deckSize);
 
 	CardState checkCards();
+
+	bool checkWin();
 
 	std::vector<Card>& getCards();
 

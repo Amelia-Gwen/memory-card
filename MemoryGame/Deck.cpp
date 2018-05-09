@@ -51,6 +51,18 @@ CardState Deck::checkCards()
 	}
 }
 
+bool Deck::checkWin()
+{
+	for (std::vector<Card>::iterator card = deck.begin(); card != deck.end(); ++card)
+	{
+		if (card->checkState() != CardState::matched)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 std::vector<Card>& Deck::getCards()
 {
 	return deck;

@@ -1,16 +1,20 @@
 #include "Player.h"
 
 Player::Player(unsigned player) :
-	matchPile{player_card_x, player_card_y + player_card_y_offset * player}
+	turn{ player }
+{}
+
+void Player::scorePoint()
 {
+	++score;
 }
 
-void Player::shiftPile()
+unsigned Player::getScore() const
 {
-	matchPile.x += player_card_x_offset;
+	return score;
 }
 
-sf::Vector2f Player::getPile() const
+unsigned Player::getTurn() const
 {
-	return matchPile;
+	return turn;
 }

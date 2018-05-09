@@ -40,12 +40,23 @@ void ModelData::update()
 	if (deck.checkCards() == CardState::matched)
 	{
 		// player takes card
-		// inc score
+		activePlayer->scorePoint();
 	}
 	else if (deck.checkCards() == CardState::unmatched)
 	{
 		// wait before resetting
-		// change turns
+		if (activePlayer->getScore() < players.size() - 1)
+		{
+			activePlayer = &players[activePlayer->getScore() + 1];
+		}
+		else
+		{
+			activePlayer = &players[0];
+		}
+	}
+	if (deck.checkWin())
+	{
+		// announce winner
 	}
 }
 
