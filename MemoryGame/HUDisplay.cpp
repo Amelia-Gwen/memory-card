@@ -1,16 +1,17 @@
 #include "HUDisplay.h"
 
-HUDisplay::HUDisplay()
+HUDisplay::HUDisplay(ModelData& data) :
+	data{ data }
 {
-	//font.loadFromFile("");
+	font.loadFromFile("{PixelFlag}.ttf");
 	playerOneDisplay.setPosition(display_x, player_one_display_y);
-	playerOneDisplay.setFillColor(sf::Color::Black); // to be removed
 	playerTwoDisplay.setPosition(display_x, player_two_display_y);
-	playerTwoDisplay.setFillColor(sf::Color::Black); // to be removed
-	playerOne.setCharacterSize(30);
-	//playerOne.setPosition();
-	playerTwo.setCharacterSize(30);
-	//playerTwo.setPosition();
+	playerOne.setPosition(display_x, player_one_display_y);
+	playerOne.setCharacterSize(50);
+	playerOne.setFillColor(sf::Color::Black);
+	playerTwo.setPosition(display_x, player_two_display_y);
+	playerTwo.setCharacterSize(50);
+	playerTwo.setFillColor(sf::Color::Black);
 }
 
 void HUDisplay::draw(sf::RenderWindow& window)
