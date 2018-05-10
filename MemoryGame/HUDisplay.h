@@ -13,6 +13,8 @@ class HUDisplay
 public:
 	HUDisplay(ModelData& data);
 
+	void update();
+
 	void draw(sf::RenderWindow& window);
 private:
 	ModelData& data;

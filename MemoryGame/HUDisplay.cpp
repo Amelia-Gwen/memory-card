@@ -14,6 +14,17 @@ HUDisplay::HUDisplay(ModelData& data) :
 	playerTwo.setFillColor(sf::Color::Black);
 }
 
+void HUDisplay::update()
+{
+	if (data.getPlayers().size() > 1)
+	{
+		playerOneScore = data.getPlayers()[0].getScore();
+		playerTwoScore = data.getPlayers()[1].getScore();
+	}
+	playerOne.setString("Player One: " + std::to_string(playerOneScore));
+	playerTwo.setString("Player Two: " + std::to_string(playerTwoScore));
+}
+
 void HUDisplay::draw(sf::RenderWindow& window)
 {
 	window.draw(playerOneDisplay);

@@ -14,10 +14,10 @@ public:
 
 	unsigned getScore() const;
 
-	unsigned getTurn() const;
+	unsigned getIndex() const;
 private:
 	unsigned score{ 0 };
-	unsigned turn;
+	const unsigned index;
 };
 
 #endif // !BRUGLESCO_MEMORY_PLAYER_H

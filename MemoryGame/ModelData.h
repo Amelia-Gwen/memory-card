@@ -14,6 +14,8 @@ public:
 
 	std::vector<Card>& getDeck();
 
+	std::vector<Player>& getPlayers();
+
 	void play();
 
 	void quit();

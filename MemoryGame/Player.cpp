@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player::Player(unsigned player) :
-	turn{ player }
+	index{ player }
 {}
 
 void Player::scorePoint()
@@ -14,7 +14,7 @@ unsigned Player::getScore() const
 	return score;
 }
 
-unsigned Player::getTurn() const
+unsigned Player::getIndex() const
 {
-	return turn;
+	return index;
 }

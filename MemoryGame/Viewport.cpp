@@ -41,7 +41,7 @@ void Viewport::input()
 
 void Viewport::update()
 {
-	// remove if not used
+	game.update();
 }
 
 void Viewport::draw()

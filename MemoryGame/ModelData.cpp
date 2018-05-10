@@ -15,6 +15,11 @@ std::vector<Card>& ModelData::getDeck()
 	return deck.getCards();
 }
 
+std::vector<Player>& ModelData::getPlayers()
+{
+	return players;
+}
+
 void ModelData::play()
 {
 	players.clear();
@@ -37,7 +42,22 @@ void ModelData::quit()
 
 void ModelData::update()
 {
-	if (deck.checkCards() == CardState::matched)
+	if (deck.checkWin())
+	{
+		if (players[0].getScore() == players[1].getScore())
+		{
+			// draw
+		}
+		else if (players[0].getScore() > players[1].getScore())
+		{
+			// player 1 wins
+		}
+		else
+		{
+			// player 2 wins
+		}
+	}
+	else if (deck.checkCards() == CardState::matched)
 	{
 		// player takes card
 		activePlayer->scorePoint();
@@ -45,18 +65,14 @@ void ModelData::update()
 	else if (deck.checkCards() == CardState::unmatched)
 	{
 		// wait before resetting
-		if (activePlayer->getScore() < players.size() - 1)
+		if (activePlayer->getIndex() < players.size() - 1)
 		{
-			activePlayer = &players[activePlayer->getScore() + 1];
+			activePlayer = &players[activePlayer->getIndex() + 1];
 		}
 		else
 		{
 			activePlayer = &players[0];
 		}
-	}
-	if (deck.checkWin())
-	{
-		// announce winner
 	}
 }
 

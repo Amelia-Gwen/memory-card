@@ -45,7 +45,7 @@ void GameScreen::input(const sf::Vector2f& mousePos)
 
 void GameScreen::update()
 {
-	// remove if not needed
+	hud.update();
 }
 
 void GameScreen::draw(sf::RenderWindow& window)
