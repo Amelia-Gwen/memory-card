@@ -31,6 +31,7 @@ constexpr float reset_x = 1372.f;
 constexpr float display_x = 1244.f;
 constexpr float player_one_display_y = 64.f;
 constexpr float player_two_display_y = 432.f;
+constexpr float display_offset = 20.f;
 
 constexpr float display_width = 256.f;
 constexpr float display_height = 368.f;

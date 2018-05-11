@@ -58,7 +58,6 @@ void MenuScreen::input(const sf::Vector2f& mousePos)
 
 void MenuScreen::draw(sf::RenderWindow& window)
 {
-	window.draw(backgroundSprite);
 	window.draw(playButton);
 	window.draw(sixPairs);
 	window.draw(eightPairs);

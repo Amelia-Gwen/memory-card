@@ -17,9 +17,7 @@ public:
 private:
 	ModelData& data;
 	GameScreen& game;
-	sf::Texture menuBackground;
 	sf::Texture menuMap;
-	sf::Sprite backgroundSprite{ menuBackground, sf::IntRect(0, 0, screen_width, screen_height) };
 	sf::RectangleShape playButton{ sf::Vector2f(menu_button_width, menu_button_height) };
 	sf::RectangleShape sixPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
 	sf::RectangleShape eightPairs{ sf::Vector2f(menu_button_width, menu_button_height) };

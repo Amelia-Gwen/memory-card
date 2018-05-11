@@ -50,7 +50,6 @@ void GameScreen::update()
 
 void GameScreen::draw(sf::RenderWindow& window)
 {
-	window.draw(backgroundSprite);
 	window.draw(pause);
 	window.draw(returnToMain);
 	hud.draw(window);

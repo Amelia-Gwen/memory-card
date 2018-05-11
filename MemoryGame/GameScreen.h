@@ -24,10 +24,8 @@ public:
 	void draw(sf::RenderWindow& window);
 private:
 	ModelData& data;
-	sf::Texture gameBackground;
 	sf::Texture cardMap;
 	sf::Texture gameButtonMap;
-	sf::Sprite backgroundSprite{ gameBackground, sf::IntRect(0, 0, screen_width, screen_height) };
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::RectangleShape returnToMain{ sf::Vector2f(game_button_width, game_button_height) };
 	HUDisplay hud{ data };

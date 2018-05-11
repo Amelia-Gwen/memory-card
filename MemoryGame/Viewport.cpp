@@ -2,7 +2,9 @@
 
 Viewport::Viewport(ModelData& data) :
 	data{ data }
-{}
+{
+	background.setFillColor(sf::Color(100, 100, 100, 255));
+}
 
 bool Viewport::isOpen() const
 {
@@ -49,6 +51,8 @@ void Viewport::draw()
 	if (isOpen())
 	{
 		window.clear();
+
+		window.draw(background);
 
 		if (data.isMenu())
 		{

@@ -25,6 +25,7 @@ private:
 	ModelData& data;
 	GameScreen game{ data };
 	MenuScreen menu{ data, game };
+	sf::RectangleShape background{ sf::Vector2f(static_cast<float>(screen_width), static_cast<float>(screen_height)) };
 };
 
 #endif // !BRUGLESCO_MEMORY_VIEWPORT_H
