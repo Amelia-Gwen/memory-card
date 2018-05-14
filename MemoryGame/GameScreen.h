@@ -17,7 +17,7 @@ public:
 
 	void setGame();
 
-	void highlightButton(const sf::Vector2f& mousePos);
+	void trackMouse(const sf::Vector2f& mousePos);
 
 	void input(const sf::Vector2f& mousePos);
 
@@ -41,6 +41,8 @@ private:
 	void makeCards();
 
 	void positionCards();
+
+	void highlightButtons();
 };
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H

@@ -48,91 +48,31 @@ MenuScreen::MenuScreen(ModelData& data, GameScreen& game, sf::Font& font) :
 	pairString[3].setFillColor(sf::Color::Black);
 }
 
-void MenuScreen::highlightButton(const sf::Vector2f& mousePos)
+void MenuScreen::trackMouse(const sf::Vector2f& mousePos)
 {
-	if (mouseIn == menuMouseIn::none && playButton.getGlobalBounds().contains(mousePos))
+	if (playButton.getGlobalBounds().contains(mousePos))
 	{
-		playButton.setFillColor(sf::Color(60, 60, 60, 255));
-		playString.setFillColor(sf::Color::Red);
 		mouseIn = menuMouseIn::play;
 	}
-	else if ((mouseIn == menuMouseIn::play || mouseIn == menuMouseIn::none) && !playButton.getGlobalBounds().contains(mousePos))
+	else if (sixPairs.getGlobalBounds().contains(mousePos))
 	{
-		playButton.setFillColor(sf::Color(120, 120, 120, 255));
-		playString.setFillColor(sf::Color::Black);
-		mouseIn = menuMouseIn::none;
-	}
-	
-	if (mouseIn == menuMouseIn::none && sixPairs.getGlobalBounds().contains(mousePos))
-	{
-		sixPairs.setFillColor(sf::Color(60, 60, 60, 255));
-		sixString.setFillColor(sf::Color::Red);
-		pairString[0].setFillColor(sf::Color::Red);
 		mouseIn = menuMouseIn::six;
 	}
-	else if ((mouseIn == menuMouseIn::six || mouseIn == menuMouseIn::none) && !sixPairs.getGlobalBounds().contains(mousePos))
+	else if (eightPairs.getGlobalBounds().contains(mousePos))
 	{
-		sixPairs.setFillColor(sf::Color(120, 120, 120, 255));
-		mouseIn = menuMouseIn::none;
-		if (deckSize != DeckSize::six)
-		{
-			sixString.setFillColor(sf::Color::Black);
-			pairString[0].setFillColor(sf::Color::Black);
-		}
-	}
-	
-	if (mouseIn == menuMouseIn::none && eightPairs.getGlobalBounds().contains(mousePos))
-	{
-		eightPairs.setFillColor(sf::Color(60, 60, 60, 255));
-		eightString.setFillColor(sf::Color::Red);
-		pairString[1].setFillColor(sf::Color::Red);
 		mouseIn = menuMouseIn::eight;
 	}
-	else if ((mouseIn == menuMouseIn::eight || mouseIn == menuMouseIn::none) && !eightPairs.getGlobalBounds().contains(mousePos))
+	else if (twelvePairs.getGlobalBounds().contains(mousePos))
 	{
-		eightPairs.setFillColor(sf::Color(120, 120, 120, 255));
-		mouseIn = menuMouseIn::none;
-		if (deckSize != DeckSize::eight)
-		{
-			eightString.setFillColor(sf::Color::Black);
-			pairString[1].setFillColor(sf::Color::Black);
-		}
-	}
-	
-	if (mouseIn == menuMouseIn::none && twelvePairs.getGlobalBounds().contains(mousePos))
-	{
-		twelvePairs.setFillColor(sf::Color(60, 60, 60, 255));
-		twelveString.setFillColor(sf::Color::Red);
-		pairString[2].setFillColor(sf::Color::Red);
 		mouseIn = menuMouseIn::twelve;
 	}
-	else if ((mouseIn == menuMouseIn::twelve || mouseIn == menuMouseIn::none) && !twelvePairs.getGlobalBounds().contains(mousePos))
+	else if (sixteenPairs.getGlobalBounds().contains(mousePos))
 	{
-		twelvePairs.setFillColor(sf::Color(120, 120, 120, 255));
-		mouseIn = menuMouseIn::none;
-		if (deckSize != DeckSize::twelve)
-		{
-			twelveString.setFillColor(sf::Color::Black);
-			pairString[2].setFillColor(sf::Color::Black);
-		}
-	}
-	
-	if (mouseIn == menuMouseIn::none && sixteenPairs.getGlobalBounds().contains(mousePos))
-	{
-		sixteenPairs.setFillColor(sf::Color(60, 60, 60, 255));
-		sixteenString.setFillColor(sf::Color::Red);
-		pairString[3].setFillColor(sf::Color::Red);
 		mouseIn = menuMouseIn::sixteen;
 	}
-	else if ((mouseIn == menuMouseIn::sixteen || mouseIn == menuMouseIn::none) && !sixteenPairs.getGlobalBounds().contains(mousePos))
+	else 
 	{
-		sixteenPairs.setFillColor(sf::Color(120, 120, 120, 255));
 		mouseIn = menuMouseIn::none;
-		if (deckSize != DeckSize::sixteen)
-		{
-			sixteenString.setFillColor(sf::Color::Black);
-			pairString[3].setFillColor(sf::Color::Black);
-		}
 	}
 }
 
@@ -166,6 +106,11 @@ void MenuScreen::input(const sf::Vector2f& mousePos)
 	}
 }
 
+void MenuScreen::update()
+{
+	highlightButton();
+}
+
 void MenuScreen::draw(sf::RenderWindow& window)
 {
 	window.draw(playButton);
@@ -181,5 +126,95 @@ void MenuScreen::draw(sf::RenderWindow& window)
 	for (std::vector<sf::Text>::iterator string = pairString.begin(); string != pairString.end(); ++string)
 	{
 		window.draw(*string);
+	}
+}
+
+void MenuScreen::highlightButton()
+{
+	if (mouseIn == menuMouseIn::play)
+	{
+		playButton.setFillColor(sf::Color(60, 60, 60, 255));
+		playString.setFillColor(sf::Color::Red);
+	}
+	else
+	{
+		playButton.setFillColor(sf::Color(120, 120, 120, 255));
+		playString.setFillColor(sf::Color::Black);
+	}
+
+	if (mouseIn == menuMouseIn::six)
+	{
+		sixPairs.setFillColor(sf::Color(60, 60, 60, 255));
+		sixString.setFillColor(sf::Color::Red);
+		pairString[0].setFillColor(sf::Color::Red);
+	}
+	else if (deckSize == DeckSize::six)
+	{
+		sixPairs.setFillColor(sf::Color(120, 120, 120, 255));
+		sixString.setFillColor(sf::Color::Red);
+		pairString[0].setFillColor(sf::Color::Red);
+	}
+	else
+	{
+		sixPairs.setFillColor(sf::Color(120, 120, 120, 255));
+		sixString.setFillColor(sf::Color::Black);
+		pairString[0].setFillColor(sf::Color::Black);
+	}
+
+	if (mouseIn == menuMouseIn::eight)
+	{
+		eightPairs.setFillColor(sf::Color(60, 60, 60, 255));
+		eightString.setFillColor(sf::Color::Red);
+		pairString[1].setFillColor(sf::Color::Red);
+	}
+	else if (deckSize == DeckSize::eight)
+	{
+		eightPairs.setFillColor(sf::Color(120, 120, 120, 255));
+		eightString.setFillColor(sf::Color::Red);
+		pairString[1].setFillColor(sf::Color::Red);
+	}
+	else
+	{
+		eightPairs.setFillColor(sf::Color(120, 120, 120, 255));
+		eightString.setFillColor(sf::Color::Black);
+		pairString[1].setFillColor(sf::Color::Black);
+	}
+
+	if (mouseIn == menuMouseIn::twelve)
+	{
+		twelvePairs.setFillColor(sf::Color(60, 60, 60, 255));
+		twelveString.setFillColor(sf::Color::Red);
+		pairString[2].setFillColor(sf::Color::Red);
+	}
+	else if (deckSize == DeckSize::twelve)
+	{
+		twelvePairs.setFillColor(sf::Color(120, 120, 120, 255));
+		twelveString.setFillColor(sf::Color::Red);
+		pairString[2].setFillColor(sf::Color::Red);
+	}
+	else
+	{
+		twelvePairs.setFillColor(sf::Color(120, 120, 120, 255));
+		twelveString.setFillColor(sf::Color::Black);
+		pairString[2].setFillColor(sf::Color::Black);
+	}
+
+	if (mouseIn == menuMouseIn::sixteen)
+	{
+		sixteenPairs.setFillColor(sf::Color(60, 60, 60, 255));
+		sixteenString.setFillColor(sf::Color::Red);
+		pairString[3].setFillColor(sf::Color::Red);
+	}
+	else if (deckSize == DeckSize::sixteen)
+	{
+		sixteenPairs.setFillColor(sf::Color(120, 120, 120, 255));
+		sixteenString.setFillColor(sf::Color::Red);
+		pairString[3].setFillColor(sf::Color::Red);
+	}
+	else
+	{
+		sixteenPairs.setFillColor(sf::Color(120, 120, 120, 255));
+		sixteenString.setFillColor(sf::Color::Black);
+		pairString[3].setFillColor(sf::Color::Black);
 	}
 }

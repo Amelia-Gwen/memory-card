@@ -23,31 +23,18 @@ void GameScreen::setGame()
 	positionCards();
 }
 
-void GameScreen::highlightButton(const sf::Vector2f& mousePos)
+void GameScreen::trackMouse(const sf::Vector2f& mousePos)
 {
-	if (mouseIn == gameMouseIn::none && pause.getGlobalBounds().contains(mousePos))
+	if (pause.getGlobalBounds().contains(mousePos))
 	{
-		pause.setFillColor(sf::Color(60, 60, 60, 255));
-		pauseString.setFillColor(sf::Color::Red);
 		mouseIn = gameMouseIn::pause;
 	}
-	else if ((mouseIn == gameMouseIn::pause || mouseIn == gameMouseIn::none) && !pause.getGlobalBounds().contains(mousePos))
+	else if (returnToMain.getGlobalBounds().contains(mousePos))
 	{
-		pause.setFillColor(sf::Color(120, 120, 120, 255));
-		pauseString.setFillColor(sf::Color::Black);
-		mouseIn = gameMouseIn::none;
-	}
-	
-	if (mouseIn == gameMouseIn::none && returnToMain.getGlobalBounds().contains(mousePos))
-	{
-		returnToMain.setFillColor(sf::Color(60, 60, 60, 255));
-		resetString.setFillColor(sf::Color::Red);
 		mouseIn = gameMouseIn::reset;
 	}
-	else if ((mouseIn == gameMouseIn::reset || mouseIn == gameMouseIn::none) && !returnToMain.getGlobalBounds().contains(mousePos))
+	else 
 	{
-		returnToMain.setFillColor(sf::Color(120, 120, 120, 255));
-		resetString.setFillColor(sf::Color::Black);
 		mouseIn = gameMouseIn::none;
 	}
 }
@@ -78,6 +65,7 @@ void GameScreen::input(const sf::Vector2f& mousePos)
 
 void GameScreen::update()
 {
+	highlightButtons();
 	hud.update();
 }
 
@@ -143,5 +131,30 @@ void GameScreen::positionCards()
 			x = padding_x;
 			y += padding_y + card_height;
 		}
+	}
+}
+
+void GameScreen::highlightButtons()
+{
+	if (paused || mouseIn == gameMouseIn::pause)
+	{
+		pause.setFillColor(sf::Color(60, 60, 60, 255));
+		pauseString.setFillColor(sf::Color::Red);
+	}
+	else
+	{
+		pause.setFillColor(sf::Color(120, 120, 120, 255));
+		pauseString.setFillColor(sf::Color::Black);
+	}
+
+	if (mouseIn == gameMouseIn::reset)
+	{
+		returnToMain.setFillColor(sf::Color(60, 60, 60, 255));
+		resetString.setFillColor(sf::Color::Red);
+	}
+	else
+	{
+		returnToMain.setFillColor(sf::Color(120, 120, 120, 255));
+		resetString.setFillColor(sf::Color::Black);
 	}
 }

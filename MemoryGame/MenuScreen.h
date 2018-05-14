@@ -11,9 +11,11 @@ class MenuScreen
 public:
 	MenuScreen(ModelData& data, GameScreen& game, sf::Font& font);
 
-	void highlightButton(const sf::Vector2f& mousePos);
+	void trackMouse(const sf::Vector2f& mousePos);
 
 	void input(const sf::Vector2f& mousePos);
+
+	void update();
 
 	void draw(sf::RenderWindow& window);
 private:
@@ -33,5 +35,7 @@ private:
 	std::vector<sf::Text> pairString{ 4, { "Pairs", font } };
 	menuMouseIn mouseIn{ menuMouseIn::none };
 	DeckSize deckSize{ DeckSize::six };
+
+	void highlightButton();
 };
 #endif // !BRUGLESCO_MEMORY_MENUSCREEN_H

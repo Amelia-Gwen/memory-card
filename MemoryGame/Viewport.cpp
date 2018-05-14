@@ -35,11 +35,11 @@ void Viewport::input()
 		{
 			if (data.isMenu())
 			{
-				menu.highlightButton(mousePos);
+				menu.trackMouse(mousePos);
 			}
 			else
 			{
-				game.highlightButton(mousePos);
+				game.trackMouse(mousePos);
 			}
 		}
 
@@ -59,7 +59,14 @@ void Viewport::input()
 
 void Viewport::update()
 {
-	game.update();
+	if (data.isMenu())
+	{
+		menu.update();
+	}
+	else
+	{
+		game.update();
+	}
 }
 
 void Viewport::draw()
