@@ -11,7 +11,7 @@
 class HUDisplay
 {
 public:
-	HUDisplay(ModelData& data);
+	HUDisplay(ModelData& data, sf::Font& font);
 
 	void update();
 
@@ -20,7 +20,7 @@ private:
 	ModelData& data;
 	sf::RectangleShape playerOneDisplay{ sf::Vector2f(display_width, display_height) };
 	sf::RectangleShape playerTwoDisplay{ sf::Vector2f(display_width, display_height) };
-	sf::Font font;
+	sf::Font& font;
 	unsigned playerOneScore{ 0 };
 	sf::Text playerOne{ "Player One: " + std::to_string(playerOneScore), font };
 	unsigned playerTwoScore{ 0 };

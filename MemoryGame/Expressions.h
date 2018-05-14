@@ -6,7 +6,7 @@
 
 static std::random_device rd;
 static std::mt19937 generator(rd());
-static std::ofstream debuggStream("DebugLog.txt");
+static std::ofstream debuggStream("DebugLog.txt"); // remove for release
 
 constexpr unsigned screen_width = 1500u;
 constexpr unsigned screen_height = 800u;
@@ -27,6 +27,8 @@ constexpr float game_button_height = 64.f;
 
 constexpr float pause_x = 1244.f;
 constexpr float reset_x = 1372.f;
+constexpr float pause_offset = 12.f;
+constexpr float reset_offset = 5.f;
 
 constexpr float display_x = 1244.f;
 constexpr float player_one_display_y = 64.f;
@@ -64,6 +66,23 @@ enum class CardState
 	unmatched,
 	checking,
 	matched
+};
+
+enum class menuMouseIn
+{
+	play,
+	six,
+	eight,
+	twelve,
+	sixteen,
+	none
+};
+
+enum class gameMouseIn
+{
+	pause,
+	reset,
+	none
 };
 
 #endif // !BRUGLESCO_MEMORY_EXPRESSIONS_H

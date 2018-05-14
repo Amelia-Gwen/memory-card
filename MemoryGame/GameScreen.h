@@ -13,9 +13,11 @@
 class GameScreen
 {
 public:
-	GameScreen(ModelData& data);
+	GameScreen(ModelData& data, sf::Font& font);
 
 	void setGame();
+
+	void highlightButton(const sf::Vector2f& mousePos);
 
 	void input(const sf::Vector2f& mousePos);
 
@@ -24,13 +26,16 @@ public:
 	void draw(sf::RenderWindow& window);
 private:
 	ModelData& data;
+	sf::Font& font;
 	sf::Texture cardMap;
-	sf::Texture gameButtonMap;
 	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
+	sf::Text pauseString{ "Pause", font };
 	sf::RectangleShape returnToMain{ sf::Vector2f(game_button_width, game_button_height) };
-	HUDisplay hud{ data };
+	sf::Text resetString{ "Return", font };
+	HUDisplay hud{ data, font };
 	std::vector<sf::RectangleShape> deck;
 	bool paused{ false };
+	gameMouseIn mouseIn{ gameMouseIn::none };
 
 	void makeCards();
 

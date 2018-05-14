@@ -1,9 +1,9 @@
 #include "HUDisplay.h"
 
-HUDisplay::HUDisplay(ModelData& data) :
-	data{ data }
+HUDisplay::HUDisplay(ModelData& data, sf::Font& font) :
+	data{ data },
+	font{ font }
 {
-	font.loadFromFile("{PixelFlag}.ttf");
 	playerOneDisplay.setPosition(display_x, player_one_display_y);
 	playerOneDisplay.setFillColor(sf::Color(120, 120, 120, 255));
 	playerTwoDisplay.setPosition(display_x, player_two_display_y);
@@ -30,7 +30,7 @@ void HUDisplay::update()
 void HUDisplay::draw(sf::RenderWindow& window)
 {
 	window.draw(playerOneDisplay);
-	window.draw(playerTwoDisplay);
 	window.draw(playerOne);
+	window.draw(playerTwoDisplay);
 	window.draw(playerTwo);
 }
