@@ -14,6 +14,7 @@ GameScreen::GameScreen(ModelData& data, sf::Font& font) :
 	resetString.setPosition(reset_x + reset_offset, 0);
 	resetString.setCharacterSize(50);
 	resetString.setFillColor(sf::Color::Black);
+	pauseForeground.setFillColor(sf::Color(120, 120, 120, 120));
 }
 
 void GameScreen::setGame()
@@ -30,19 +31,20 @@ void GameScreen::highlightButton(const sf::Vector2f& mousePos)
 		pauseString.setFillColor(sf::Color::Red);
 		mouseIn = gameMouseIn::pause;
 	}
-	else if (mouseIn == gameMouseIn::pause && !pause.getGlobalBounds().contains(mousePos))
+	else if ((mouseIn == gameMouseIn::pause || mouseIn == gameMouseIn::none) && !pause.getGlobalBounds().contains(mousePos))
 	{
 		pause.setFillColor(sf::Color(120, 120, 120, 255));
 		pauseString.setFillColor(sf::Color::Black);
 		mouseIn = gameMouseIn::none;
 	}
-	else if (mouseIn == gameMouseIn::none && returnToMain.getGlobalBounds().contains(mousePos))
+	
+	if (mouseIn == gameMouseIn::none && returnToMain.getGlobalBounds().contains(mousePos))
 	{
 		returnToMain.setFillColor(sf::Color(60, 60, 60, 255));
 		resetString.setFillColor(sf::Color::Red);
 		mouseIn = gameMouseIn::reset;
 	}
-	else if (mouseIn == gameMouseIn::reset && !returnToMain.getGlobalBounds().contains(mousePos))
+	else if ((mouseIn == gameMouseIn::reset || mouseIn == gameMouseIn::none) && !returnToMain.getGlobalBounds().contains(mousePos))
 	{
 		returnToMain.setFillColor(sf::Color(120, 120, 120, 255));
 		resetString.setFillColor(sf::Color::Black);
@@ -59,6 +61,7 @@ void GameScreen::input(const sf::Vector2f& mousePos)
 	else if (!paused && returnToMain.getGlobalBounds().contains(mousePos))
 	{
 		data.quit();
+		mouseIn = gameMouseIn::none;
 	}
 	else if (!paused)
 	{
@@ -88,6 +91,10 @@ void GameScreen::draw(sf::RenderWindow& window)
 	for (std::vector<sf::RectangleShape>::iterator card = deck.begin(); card != deck.end(); ++card)
 	{
 		window.draw(*card);
+	}
+	if (paused)
+	{
+		window.draw(pauseForeground);
 	}
 }
 

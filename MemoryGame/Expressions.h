@@ -22,6 +22,15 @@ constexpr float twelve_button_x = 797.f;
 constexpr float sixteen_button_x = 1148.f;
 constexpr float pair_button_y = 448.f;
 
+constexpr float play_string_x_offset = 18.f;
+constexpr float play_string_y_offset = 28.f;
+constexpr float six_string_x_offset = 80.f;
+constexpr float eight_string_x_offset = 40.f;
+constexpr float twelve_string_x_offset = 15.f;
+constexpr float sixteen_string_x_offset = 8.f;
+constexpr float pair_string_x_offset = 40.f;
+constexpr float pair_string_y_offset = 100.f;
+
 constexpr float game_button_width = 128.f;
 constexpr float game_button_height = 64.f;
 
@@ -47,8 +56,8 @@ constexpr float player_two_string_y = 440.f;
 
 constexpr float player_card_x = 1265.f;
 constexpr float player_card_x_offset = 5.f;
-constexpr float player_card_y = 94.f;
-constexpr float player_card_y_offset = 368.f;
+constexpr float player_one_card_y = 94.f;
+constexpr float player_two_card_y = 462.f;
 
 constexpr float card_width = 128.f;
 constexpr float card_height = 128.f;

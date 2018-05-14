@@ -36,6 +36,7 @@ private:
 	std::vector<sf::RectangleShape> deck;
 	bool paused{ false };
 	gameMouseIn mouseIn{ gameMouseIn::none };
+	sf::RectangleShape pauseForeground{ sf::Vector2f(static_cast<float>(screen_width), static_cast<float>(screen_height)) };
 
 	void makeCards();
 

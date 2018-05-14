@@ -23,13 +23,14 @@ private:
 	sf::RectangleShape playButton{ sf::Vector2f(menu_button_width, menu_button_height) };
 	sf::Text playString{ "Play", font };
 	sf::RectangleShape sixPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
-	sf::Text sixString{ "Six Pairs", font };
+	sf::Text sixString{ "Six", font };
 	sf::RectangleShape eightPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
-	sf::Text eightString{ "Eight Pairs", font };
+	sf::Text eightString{ "Eight", font };
 	sf::RectangleShape twelvePairs{ sf::Vector2f(menu_button_width, menu_button_height) };
-	sf::Text twelveString{ "Twelve Pairs", font };
+	sf::Text twelveString{ "Twelve", font };
 	sf::RectangleShape sixteenPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
-	sf::Text sixteenString{ "Sixteen Pairs", font };
+	sf::Text sixteenString{ "Sixteen", font };
+	std::vector<sf::Text> pairString{ 4, { "Pairs", font } };
 	menuMouseIn mouseIn{ menuMouseIn::none };
 	DeckSize deckSize{ DeckSize::six };
 };
