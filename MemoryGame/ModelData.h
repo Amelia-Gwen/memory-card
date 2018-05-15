@@ -12,9 +12,15 @@ public:
 
 	void setSize(const DeckSize& size);
 
+	void resetFail();
+
 	std::vector<Card>& getDeck();
 
-	std::vector<Player>& getPlayers();
+	std::vector<unsigned>& getFailedCards();
+
+	Player* getPlayer();
+
+	bool playerOneTurn() const;
 
 	void play();
 
@@ -24,10 +30,14 @@ public:
 private:
 	bool menu{ true };
 	unsigned numPlayers{ 2 };
-	std::vector<Player> players;
-	Player* activePlayer{ nullptr };
+	Player playerOne;
+	Player playerTwo;
+	Player* activePlayer{ &playerOne };
 	DeckSize deckSize{ DeckSize::six };
 	Deck deck;
+	bool p1Turn{ true };
+	bool ended{ false };
+	winState winner{ winState::none };
 
 	void dealDeck();
 };

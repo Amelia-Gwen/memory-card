@@ -8,16 +8,13 @@
 class Player
 {
 public:
-	Player(unsigned player);
-
 	void scorePoint();
 
-	unsigned getScore() const;
+	void reset();
 
-	unsigned getIndex() const;
+	unsigned getScore() const;
 private:
 	unsigned score{ 0 };
-	const unsigned index;
 };
 
 #endif // !BRUGLESCO_MEMORY_PLAYER_H

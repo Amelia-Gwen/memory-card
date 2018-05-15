@@ -16,16 +16,23 @@ void Deck::set(const DeckSize& deckSize)
 	std::shuffle(std::begin(deck), std::end(deck), generator);
 }
 
+void Deck::resetFail()
+{
+	upCards.clear();
+}
+
 CardState Deck::checkCards()
 {
 	unsigned count = 0;
 	std::vector<Card*> cards;
-	for (std::vector<Card>::iterator card = deck.begin(); card != deck.end(); ++card)
+	std::vector<unsigned> indeces;
+	for (unsigned i = 0; i < deck.size(); ++i)
 	{
-		if (card->checkState() == CardState::checking)
+		if (deck[i].checkState() == CardState::checking)
 		{
 			++count;
-			cards.push_back(&*card);
+			cards.push_back(&deck[i]);
+			indeces.push_back(i);
 		}
 	}
 
@@ -39,7 +46,7 @@ CardState Deck::checkCards()
 		}
 		else
 		{
-			// wait before resetting
+			upCards = indeces;
 			cards[0]->reset();
 			cards[1]->reset();
 			return CardState::unmatched;
@@ -66,6 +73,11 @@ bool Deck::checkWin()
 std::vector<Card>& Deck::getCards()
 {
 	return deck;
+}
+
+std::vector<unsigned>& Deck::getFailedCards()
+{
+	return upCards;
 }
 
 void Deck::clear()

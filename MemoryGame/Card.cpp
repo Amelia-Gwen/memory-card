@@ -9,7 +9,7 @@ unsigned Card::getMatch() const
 	return matchNum;
 }
 
-CardState Card::checkState()
+CardState Card::checkState() const
 {
 	return cardState;
 }

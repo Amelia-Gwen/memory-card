@@ -37,12 +37,19 @@ private:
 	bool paused{ false };
 	gameMouseIn mouseIn{ gameMouseIn::none };
 	sf::RectangleShape pauseForeground{ sf::Vector2f(static_cast<float>(screen_width), static_cast<float>(screen_height)) };
+	unsigned delay{ 0 };
 
 	void makeCards();
 
 	void positionCards();
 
 	void highlightButtons();
+
+	void matchFailDelay();
+
+	void endFailDelay();
+
+	void highlightCards(); // to be removed
 };
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H

@@ -1,20 +1,16 @@
 #include "Player.h"
 
-Player::Player(unsigned player) :
-	index{ player }
-{}
-
 void Player::scorePoint()
 {
 	++score;
 }
 
+void Player::reset()
+{
+	score = 0;
+}
+
 unsigned Player::getScore() const
 {
 	return score;
-}
-
-unsigned Player::getIndex() const
-{
-	return index;
 }

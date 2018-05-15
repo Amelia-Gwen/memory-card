@@ -10,7 +10,7 @@ HUDisplay::HUDisplay(ModelData& data, sf::Font& font) :
 	playerTwoDisplay.setFillColor(sf::Color(120, 120, 120, 255));
 	playerOne.setPosition(display_x + display_offset, player_one_display_y);
 	playerOne.setCharacterSize(50);
-	playerOne.setFillColor(sf::Color::Black);
+	playerOne.setFillColor(sf::Color::Red);
 	playerTwo.setPosition(display_x + display_offset, player_two_display_y);
 	playerTwo.setCharacterSize(50);
 	playerTwo.setFillColor(sf::Color::Black);
@@ -18,13 +18,20 @@ HUDisplay::HUDisplay(ModelData& data, sf::Font& font) :
 
 void HUDisplay::update()
 {
-	if (data.getPlayers().size() > 1)
+	if (data.playerOneTurn())
 	{
-		playerOneScore = data.getPlayers()[0].getScore();
-		playerTwoScore = data.getPlayers()[1].getScore();
+		playerOneScore = data.getPlayer()->getScore();
+		playerOne.setString("Player One: " + std::to_string(playerOneScore));
+		playerOne.setFillColor(sf::Color::Red);
+		playerTwo.setFillColor(sf::Color::Black);
 	}
-	playerOne.setString("Player One: " + std::to_string(playerOneScore));
-	playerTwo.setString("Player Two: " + std::to_string(playerTwoScore));
+	else
+	{
+		playerTwoScore = data.getPlayer()->getScore();
+		playerTwo.setString("Player Two: " + std::to_string(playerTwoScore));
+		playerOne.setFillColor(sf::Color::Black);
+		playerTwo.setFillColor(sf::Color::Red);
+	}
 }
 
 void HUDisplay::draw(sf::RenderWindow& window)

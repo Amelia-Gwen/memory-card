@@ -80,6 +80,7 @@ void MenuScreen::input(const sf::Vector2f& mousePos)
 {
 	if (playButton.getGlobalBounds().contains(mousePos))
 	{
+		data.setSize(deckSize);
 		data.play();
 		game.setGame();
 		mouseIn = menuMouseIn::none;

@@ -5,9 +5,14 @@ bool ModelData::isMenu() const
 	return menu;
 }
 
-void ModelData::setSize(const DeckSize & size)
+void ModelData::setSize(const DeckSize& size)
 {
 	deckSize = size;
+}
+
+void ModelData::resetFail()
+{
+	deck.resetFail();
 }
 
 std::vector<Card>& ModelData::getDeck()
@@ -15,64 +20,77 @@ std::vector<Card>& ModelData::getDeck()
 	return deck.getCards();
 }
 
-std::vector<Player>& ModelData::getPlayers()
+std::vector<unsigned>& ModelData::getFailedCards()
 {
-	return players;
+	return deck.getFailedCards();
+}
+
+Player* ModelData::getPlayer()
+{
+	return activePlayer;
+}
+
+bool ModelData::playerOneTurn() const
+{
+	return p1Turn;
 }
 
 void ModelData::play()
 {
-	players.clear();
-	for (unsigned i = 0; i < numPlayers; ++i)
-	{
-		players.push_back(Player(i));
-	}
-	activePlayer = &players[0];
 	dealDeck();
 	menu = false;
 }
 
 void ModelData::quit()
 {
-	activePlayer = nullptr;
-	players.clear();
+	playerOne.reset();
+	playerTwo.reset();
+	activePlayer = &playerOne;
 	deck.clear();
 	menu = true;
+	p1Turn = true;
+	ended = false;
+	winner = winState::none;
 }
 
 void ModelData::update()
 {
-	if (deck.checkWin())
+	CardState deckState = deck.checkCards();
+	if (deck.checkWin() && !ended)
 	{
-		if (players[0].getScore() == players[1].getScore())
+		if (playerOne.getScore() == playerTwo.getScore())
 		{
-			// draw
+			ended = true;
+			winner = winState::draw;
+
 		}
-		else if (players[0].getScore() > players[1].getScore())
+		else if (playerOne.getScore() > playerTwo.getScore())
 		{
-			// player 1 wins
+			ended = true;
+			winner = winState::playerOne;
 		}
 		else
 		{
-			// player 2 wins
+			ended = true;
+			winner = winState::playerTwo;
 		}
 	}
-	else if (deck.checkCards() == CardState::matched)
+	else if (deckState == CardState::matched)
 	{
 		// player takes card
 		activePlayer->scorePoint();
 	}
-	else if (deck.checkCards() == CardState::unmatched)
+	else if (deckState == CardState::unmatched)
 	{
-		// wait before resetting
-		if (activePlayer->getIndex() < players.size() - 1)
+		if (p1Turn)
 		{
-			activePlayer = &players[activePlayer->getIndex() + 1];
+			activePlayer = &playerTwo;
 		}
 		else
 		{
-			activePlayer = &players[0];
+			activePlayer = &playerOne;
 		}
+		p1Turn = !p1Turn;
 	}
 }
 

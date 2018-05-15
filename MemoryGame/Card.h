@@ -12,7 +12,7 @@ public:
 
 	unsigned getMatch() const;
 
-	CardState checkState();
+	CardState checkState() const;
 
 	void flip();
 

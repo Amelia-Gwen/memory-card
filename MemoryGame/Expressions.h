@@ -94,4 +94,12 @@ enum class gameMouseIn
 	none
 };
 
+enum class winState
+{
+	none,
+	draw,
+	playerOne,
+	playerTwo
+};
+
 #endif // !BRUGLESCO_MEMORY_EXPRESSIONS_H

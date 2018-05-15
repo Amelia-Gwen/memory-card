@@ -48,9 +48,8 @@ void GameScreen::input(const sf::Vector2f& mousePos)
 	else if (!paused && returnToMain.getGlobalBounds().contains(mousePos))
 	{
 		data.quit();
-		mouseIn = gameMouseIn::none;
 	}
-	else if (!paused)
+	else if (!paused && delay == 0)
 	{
 		for (std::pair<std::vector<Card>::iterator, std::vector<sf::RectangleShape>::iterator> card(data.getDeck().begin(), deck.begin());
 			card.first != data.getDeck().end() && card.second != deck.end(); ++card.first, ++card.second)
@@ -66,7 +65,18 @@ void GameScreen::input(const sf::Vector2f& mousePos)
 void GameScreen::update()
 {
 	highlightButtons();
+	matchFailDelay();
+	highlightCards(); // to be removed
 	hud.update();
+
+	if (delay == 1)
+	{
+		endFailDelay();
+	}
+	if (delay > 0)
+	{
+		--delay;
+	}
 }
 
 void GameScreen::draw(sf::RenderWindow& window)
@@ -156,5 +166,37 @@ void GameScreen::highlightButtons()
 	{
 		returnToMain.setFillColor(sf::Color(120, 120, 120, 255));
 		resetString.setFillColor(sf::Color::Black);
+	}
+}
+
+void GameScreen::matchFailDelay()
+{
+	if (delay == 0 && data.getFailedCards().size() == 2)
+	{
+		delay = 800;
+	}
+}
+
+void GameScreen::endFailDelay()
+{
+	data.resetFail();
+}
+
+void GameScreen::highlightCards()
+{
+	for (unsigned i = 0; i < data.getDeck().size(); ++i)
+	{
+		if (data.getDeck()[i].checkState() == CardState::unmatched)
+		{
+			deck[i].setFillColor(sf::Color::Black);
+		}
+		else
+		{
+			deck[i].setFillColor(sf::Color::Green);
+		}
+	}
+	for (unsigned i = 0; i < data.getFailedCards().size(); ++i)
+	{
+		deck[data.getFailedCards()[i]].setFillColor(sf::Color::Green);
 	}
 }

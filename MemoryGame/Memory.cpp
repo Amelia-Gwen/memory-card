@@ -18,6 +18,7 @@ void Memory::input()
 void Memory::update()
 {
 	playing = view.isOpen();
+	data.update();
 	view.update();
 }
 
