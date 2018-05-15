@@ -55,9 +55,9 @@ constexpr float player_one_string_y = 72.f;
 constexpr float player_two_string_y = 440.f;
 
 constexpr float player_card_x = 1265.f;
-constexpr float player_card_x_offset = 5.f;
-constexpr float player_one_card_y = 94.f;
-constexpr float player_two_card_y = 462.f;
+constexpr float player_card_x_offset = 15.f;
+constexpr float player_one_card_y = 120.f;
+constexpr float player_two_card_y = 488.f;
 
 constexpr float card_width = 128.f;
 constexpr float card_height = 128.f;

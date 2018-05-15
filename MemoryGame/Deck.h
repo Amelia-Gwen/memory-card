@@ -12,7 +12,7 @@ class Deck
 public:
 	void set(const DeckSize& deckSize);
 
-	void resetFail();
+	void reset();
 
 	CardState checkCards();
 
@@ -22,10 +22,13 @@ public:
 
 	std::vector<unsigned>& getFailedCards();
 
+	std::vector<unsigned>& getMatchedCards();
+
 	void clear();
 private:
 	std::vector<Card> deck;
 	std::vector<unsigned> upCards;
+	std::vector<unsigned> matchedCards;
 };
 
 #endif // !BRUGLESCO_MEMORY_DECK_H

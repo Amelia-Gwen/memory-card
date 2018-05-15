@@ -66,6 +66,7 @@ void GameScreen::update()
 {
 	highlightButtons();
 	matchFailDelay();
+	moveMatched();
 	highlightCards(); // to be removed
 	hud.update();
 
@@ -179,7 +180,30 @@ void GameScreen::matchFailDelay()
 
 void GameScreen::endFailDelay()
 {
-	data.resetFail();
+	data.resetTurnCards();
+}
+
+void GameScreen::moveMatched()
+{
+	if (data.getMatchedCards().size() == 2)
+	{
+		float x = player_card_x + player_card_x_offset * data.getPlayer()->getScore();
+		float y;
+		if (data.playerOneTurn())
+		{
+			y = player_one_card_y;
+		}
+		else
+		{
+			y = player_two_card_y;
+		}
+
+		for (unsigned i = 0; i < data.getMatchedCards().size(); ++i)
+		{
+			deck[data.getMatchedCards()[i]].setPosition(x, y);
+		}
+		data.resetTurnCards();
+	}
 }
 
 void GameScreen::highlightCards()

@@ -10,13 +10,17 @@ class ModelData
 public:
 	bool isMenu() const;
 
+	bool isOver() const;
+
 	void setSize(const DeckSize& size);
 
-	void resetFail();
+	void resetTurnCards();
 
 	std::vector<Card>& getDeck();
 
 	std::vector<unsigned>& getFailedCards();
+
+	std::vector<unsigned>& getMatchedCards();
 
 	Player* getPlayer();
 

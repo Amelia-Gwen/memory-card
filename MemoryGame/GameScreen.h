@@ -37,6 +37,7 @@ private:
 	bool paused{ false };
 	gameMouseIn mouseIn{ gameMouseIn::none };
 	sf::RectangleShape pauseForeground{ sf::Vector2f(static_cast<float>(screen_width), static_cast<float>(screen_height)) };
+	//sf::RectangleShape endGameForeground{}
 	unsigned delay{ 0 };
 
 	void makeCards();
@@ -48,6 +49,8 @@ private:
 	void matchFailDelay();
 
 	void endFailDelay();
+
+	void moveMatched();
 
 	void highlightCards(); // to be removed
 };

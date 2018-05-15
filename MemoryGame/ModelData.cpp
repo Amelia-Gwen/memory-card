@@ -5,14 +5,19 @@ bool ModelData::isMenu() const
 	return menu;
 }
 
+bool ModelData::isOver() const
+{
+	return ended;
+}
+
 void ModelData::setSize(const DeckSize& size)
 {
 	deckSize = size;
 }
 
-void ModelData::resetFail()
+void ModelData::resetTurnCards()
 {
-	deck.resetFail();
+	deck.reset();
 }
 
 std::vector<Card>& ModelData::getDeck()
@@ -23,6 +28,11 @@ std::vector<Card>& ModelData::getDeck()
 std::vector<unsigned>& ModelData::getFailedCards()
 {
 	return deck.getFailedCards();
+}
+
+std::vector<unsigned>& ModelData::getMatchedCards()
+{
+	return deck.getMatchedCards();
 }
 
 Player* ModelData::getPlayer()
