@@ -28,16 +28,19 @@ private:
 	ModelData& data;
 	sf::Font& font;
 	sf::Texture cardMap;
-	sf::RectangleShape pause{ sf::Vector2f(game_button_width, game_button_height) };
+	sf::RectangleShape pauseButton{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::Text pauseString{ "Pause", font };
 	sf::RectangleShape returnToMain{ sf::Vector2f(game_button_width, game_button_height) };
 	sf::Text resetString{ "Return", font };
 	HUDisplay hud{ data, font };
-	std::vector<sf::RectangleShape> deck;
-	bool paused{ false };
-	gameMouseIn mouseIn{ gameMouseIn::none };
 	sf::RectangleShape pauseForeground{ sf::Vector2f(static_cast<float>(screen_width), static_cast<float>(screen_height)) };
-	//sf::RectangleShape endGameForeground{}
+	sf::RectangleShape endGameForeground{ sf::Vector2f(win_width, win_height) };
+	sf::Text winString{ "Winner", font };
+	sf::Text playerWinString{ "", font };
+	std::vector<sf::RectangleShape> deck;
+	gameMouseIn mouseIn{ gameMouseIn::none };
+	bool paused{ false };
+	std::vector<unsigned> imageIdentifiers;
 	unsigned delay{ 0 };
 
 	void makeCards();

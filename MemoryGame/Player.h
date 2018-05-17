@@ -8,12 +8,17 @@
 class Player
 {
 public:
+	Player(unsigned identity);
+
 	void scorePoint();
 
 	void reset();
 
+	unsigned getIdentity() const;
+
 	unsigned getScore() const;
 private:
+	unsigned identity;
 	unsigned score{ 0 };
 };
 

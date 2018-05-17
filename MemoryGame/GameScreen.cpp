@@ -4,8 +4,8 @@ GameScreen::GameScreen(ModelData& data, sf::Font& font) :
 	data{ data },
 	font{ font }
 {
-	pause.setPosition(pause_x, 0);
-	pause.setFillColor(sf::Color(120, 120, 120, 255));
+	pauseButton.setPosition(pause_x, 0);
+	pauseButton.setFillColor(sf::Color(120, 120, 120, 255));
 	pauseString.setPosition(pause_x + pause_offset, 0);
 	pauseString.setCharacterSize(50);
 	pauseString.setFillColor(sf::Color::Black);
@@ -15,17 +15,30 @@ GameScreen::GameScreen(ModelData& data, sf::Font& font) :
 	resetString.setCharacterSize(50);
 	resetString.setFillColor(sf::Color::Black);
 	pauseForeground.setFillColor(sf::Color(120, 120, 120, 120));
+	endGameForeground.setPosition(win_x, win_y);
+	endGameForeground.setFillColor(sf::Color(90, 90, 90, 180));
+	winString.setPosition(winstring_x, winstring_y);
+	winString.setCharacterSize(250);
+	winString.setFillColor(sf::Color::Green);
+	playerWinString.setPosition(player_winstring_x, player_winstring_y);
+	playerWinString.setCharacterSize(250);
+	playerWinString.setFillColor(sf::Color::Green);
+	for (unsigned i = 0; i < max_pairs; ++i)
+	{
+		imageIdentifiers.push_back(i);
+	}
 }
 
 void GameScreen::setGame()
 {
+	std::shuffle(std::begin(imageIdentifiers), std::end(imageIdentifiers), generator);
 	makeCards();
 	positionCards();
 }
 
 void GameScreen::trackMouse(const sf::Vector2f& mousePos)
 {
-	if (pause.getGlobalBounds().contains(mousePos))
+	if (pauseButton.getGlobalBounds().contains(mousePos))
 	{
 		mouseIn = gameMouseIn::pause;
 	}
@@ -41,7 +54,7 @@ void GameScreen::trackMouse(const sf::Vector2f& mousePos)
 
 void GameScreen::input(const sf::Vector2f& mousePos)
 {
-	if (pause.getGlobalBounds().contains(mousePos))
+	if (pauseButton.getGlobalBounds().contains(mousePos))
 	{
 		paused = !paused;
 	}
@@ -78,11 +91,16 @@ void GameScreen::update()
 	{
 		--delay;
 	}
+
+	if (data.isOver())
+	{
+		playerWinString.setString("Player " + std::to_string(data.getPlayer()->getIdentity()));
+	}
 }
 
 void GameScreen::draw(sf::RenderWindow& window)
 {
-	window.draw(pause);
+	window.draw(pauseButton);
 	window.draw(pauseString);
 	window.draw(returnToMain);
 	window.draw(resetString);
@@ -94,6 +112,12 @@ void GameScreen::draw(sf::RenderWindow& window)
 	if (paused)
 	{
 		window.draw(pauseForeground);
+	}
+	if (data.isOver())
+	{
+		window.draw(endGameForeground);
+		window.draw(winString);
+		window.draw(playerWinString);
 	}
 }
 
@@ -149,12 +173,12 @@ void GameScreen::highlightButtons()
 {
 	if (paused || mouseIn == gameMouseIn::pause)
 	{
-		pause.setFillColor(sf::Color(60, 60, 60, 255));
+		pauseButton.setFillColor(sf::Color(60, 60, 60, 255));
 		pauseString.setFillColor(sf::Color::Red);
 	}
 	else
 	{
-		pause.setFillColor(sf::Color(120, 120, 120, 255));
+		pauseButton.setFillColor(sf::Color(120, 120, 120, 255));
 		pauseString.setFillColor(sf::Color::Black);
 	}
 

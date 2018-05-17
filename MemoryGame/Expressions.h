@@ -62,6 +62,17 @@ constexpr float player_two_card_y = 488.f;
 constexpr float card_width = 128.f;
 constexpr float card_height = 128.f;
 
+constexpr unsigned max_pairs = 16u;
+
+constexpr float win_width = screen_width - 300.f;
+constexpr float win_height = screen_height - 150.f;
+constexpr float win_x = 150.f;
+constexpr float win_y = 75.f;
+constexpr float winstring_x = 400.f;
+constexpr float winstring_y = 100.f;
+constexpr float player_winstring_x = winstring_x - 50.f;
+constexpr float player_winstring_y = winstring_y + 200.f;
+
 enum class DeckSize
 {
 	six = 6,

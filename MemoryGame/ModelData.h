@@ -34,14 +34,14 @@ public:
 private:
 	bool menu{ true };
 	unsigned numPlayers{ 2 };
-	Player playerOne;
-	Player playerTwo;
+	Player playerOne{ 1 };
+	Player playerTwo{ 2 };
 	Player* activePlayer{ &playerOne };
-	DeckSize deckSize{ DeckSize::six };
 	Deck deck;
+	DeckSize deckSize{ DeckSize::six };
+	winState winner{ winState::none };
 	bool p1Turn{ true };
 	bool ended{ false };
-	winState winner{ winState::none };
 
 	void dealDeck();
 };
