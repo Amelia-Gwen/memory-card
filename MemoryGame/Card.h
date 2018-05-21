@@ -3,8 +3,6 @@
 
 #include "Expressions.h"
 
-#include <SFML\Graphics.hpp>
-
 class Card
 {
 public:

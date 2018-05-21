@@ -94,7 +94,7 @@ void GameScreen::update()
 
 	if (data.isOver())
 	{
-		playerWinString.setString("Player " + std::to_string(data.getPlayer()->getIdentity()));
+		playerWinString.setString("Player " + std::to_string(data.getPlayer().getIdentity()));
 	}
 }
 
@@ -109,10 +109,12 @@ void GameScreen::draw(sf::RenderWindow& window)
 	{
 		window.draw(*card);
 	}
+	
 	if (paused)
 	{
 		window.draw(pauseForeground);
 	}
+	
 	if (data.isOver())
 	{
 		window.draw(endGameForeground);
@@ -211,7 +213,7 @@ void GameScreen::moveMatched()
 {
 	if (data.getMatchedCards().size() == 2)
 	{
-		float x = player_card_x + player_card_x_offset * data.getPlayer()->getScore();
+		float x = player_card_x + player_card_x_offset * data.getPlayer().getScore();
 		float y;
 		if (data.playerOneTurn())
 		{

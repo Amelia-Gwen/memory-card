@@ -20,14 +20,14 @@ void HUDisplay::update()
 {
 	if (data.playerOneTurn())
 	{
-		playerOneScore = data.getPlayer()->getScore();
+		playerOneScore = data.getPlayer().getScore();
 		playerOne.setString("Player One: " + std::to_string(playerOneScore));
 		playerOne.setFillColor(sf::Color::Red);
 		playerTwo.setFillColor(sf::Color::Black);
 	}
 	else
 	{
-		playerTwoScore = data.getPlayer()->getScore();
+		playerTwoScore = data.getPlayer().getScore();
 		playerTwo.setString("Player Two: " + std::to_string(playerTwoScore));
 		playerOne.setFillColor(sf::Color::Black);
 		playerTwo.setFillColor(sf::Color::Red);

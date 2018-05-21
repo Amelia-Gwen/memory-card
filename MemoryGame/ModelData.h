@@ -8,13 +8,9 @@
 class ModelData
 {
 public:
-	bool isMenu() const;
-
-	bool isOver() const;
-
 	void setSize(const DeckSize& size);
 
-	void resetTurnCards();
+	Player& getPlayer();
 
 	std::vector<Card>& getDeck();
 
@@ -22,9 +18,13 @@ public:
 
 	std::vector<unsigned>& getMatchedCards();
 
-	Player* getPlayer();
+	bool isMenu() const;
+
+	bool isOver() const;
 
 	bool playerOneTurn() const;
+
+	void resetTurnCards();
 
 	void play();
 
@@ -33,10 +33,7 @@ public:
 	void update();
 private:
 	bool menu{ true };
-	unsigned numPlayers{ 2 };
-	Player playerOne{ 1 };
-	Player playerTwo{ 2 };
-	Player* activePlayer{ &playerOne };
+	std::vector<Player> players{ 1, 2 };
 	Deck deck;
 	DeckSize deckSize{ DeckSize::six };
 	winState winner{ winState::none };
@@ -44,6 +41,8 @@ private:
 	bool ended{ false };
 
 	void dealDeck();
+
+	winState pickWinner();
 };
 
 #endif // !BRUGLESCO_MEMORY_MODELDATA_H

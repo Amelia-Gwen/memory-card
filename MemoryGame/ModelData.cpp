@@ -1,23 +1,20 @@
 #include "ModelData.h"
 
-bool ModelData::isMenu() const
-{
-	return menu;
-}
-
-bool ModelData::isOver() const
-{
-	return ended;
-}
-
 void ModelData::setSize(const DeckSize& size)
 {
 	deckSize = size;
 }
 
-void ModelData::resetTurnCards()
+Player& ModelData::getPlayer()
 {
-	deck.reset();
+	if (p1Turn)
+	{
+		return players[0];
+	}
+	else
+	{
+		return players[1];
+	}
 }
 
 std::vector<Card>& ModelData::getDeck()
@@ -35,14 +32,24 @@ std::vector<unsigned>& ModelData::getMatchedCards()
 	return deck.getMatchedCards();
 }
 
-Player* ModelData::getPlayer()
+bool ModelData::isMenu() const
 {
-	return activePlayer;
+	return menu;
+}
+
+bool ModelData::isOver() const
+{
+	return ended;
 }
 
 bool ModelData::playerOneTurn() const
 {
 	return p1Turn;
+}
+
+void ModelData::resetTurnCards()
+{
+	deck.reset();
 }
 
 void ModelData::play()
@@ -53,9 +60,8 @@ void ModelData::play()
 
 void ModelData::quit()
 {
-	playerOne.reset();
-	playerTwo.reset();
-	activePlayer = &playerOne;
+	players[0].reset();
+	players[1].reset();
 	deck.clear();
 	menu = true;
 	p1Turn = true;
@@ -68,38 +74,15 @@ void ModelData::update()
 	CardState deckState = deck.checkCards();
 	if (deck.checkWin() && !ended)
 	{
-		if (playerOne.getScore() == playerTwo.getScore())
-		{
-			ended = true;
-			winner = winState::draw;
-
-		}
-		else if (playerOne.getScore() > playerTwo.getScore())
-		{
-			ended = true;
-			winner = winState::playerOne;
-		}
-		else
-		{
-			ended = true;
-			winner = winState::playerTwo;
-		}
+		winner = pickWinner();
+		ended = true;
 	}
 	else if (deckState == CardState::matched)
 	{
-		// player takes card
-		activePlayer->scorePoint();
+		getPlayer().scorePoint();
 	}
 	else if (deckState == CardState::unmatched)
 	{
-		if (p1Turn)
-		{
-			activePlayer = &playerTwo;
-		}
-		else
-		{
-			activePlayer = &playerOne;
-		}
 		p1Turn = !p1Turn;
 	}
 }
@@ -107,4 +90,20 @@ void ModelData::update()
 void ModelData::dealDeck()
 {
 	deck.set(deckSize);
+}
+
+winState ModelData::pickWinner()
+{
+	if (players[0].getScore() == players[1].getScore())
+	{
+		return winState::draw;
+	}
+	else if (players[0].getScore() > players[1].getScore())
+	{
+		return winState::playerOne;
+	}
+	else
+	{
+		return winState::playerTwo;
+	}
 }

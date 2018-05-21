@@ -25,32 +25,30 @@ void Deck::reset()
 CardState Deck::checkCards()
 {
 	unsigned count = 0;
-	std::vector<Card*> cards;
 	std::vector<unsigned> indices;
 	for (unsigned i = 0; i < deck.size(); ++i)
 	{
 		if (deck[i].checkState() == CardState::checking)
 		{
 			++count;
-			cards.push_back(&deck[i]);
 			indices.push_back(i);
 		}
 	}
 
 	if (count == 2)
 	{
-		if (cards[0]->getMatch() == cards[1]->getMatch())
+		if (deck[indices[0]].getMatch() == deck[indices[1]].getMatch())
 		{
 			matchedCards = indices;
-			cards[0]->match();
-			cards[1]->match();
+			deck[indices[0]].match();
+			deck[indices[1]].match();
 			return CardState::matched;
 		}
 		else
 		{
 			upCards = indices;
-			cards[0]->reset();
-			cards[1]->reset();
+			deck[indices[0]].reset();
+			deck[indices[1]].reset();
 			return CardState::unmatched;
 		}
 	}
@@ -69,7 +67,7 @@ bool Deck::checkWin()
 			return false;
 		}
 	}
-	return true;
+	return deck.size() > 0;
 }
 
 std::vector<Card>& Deck::getCards()

@@ -90,19 +90,19 @@ enum class CardState
 
 enum class menuMouseIn
 {
+	none,
 	play,
 	six,
 	eight,
 	twelve,
-	sixteen,
-	none
+	sixteen
 };
 
 enum class gameMouseIn
 {
+	none,
 	pause,
-	reset,
-	none
+	reset
 };
 
 enum class winState
