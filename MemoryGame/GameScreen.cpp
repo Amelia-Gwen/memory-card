@@ -155,10 +155,10 @@ void GameScreen::positionCards()
 	}
 	unsigned columns = deck.size() / rows;
 
-	double padding_x = (bruglesco::canvas_width - columns * 128.f) / (columns + 1);
-	double padding_y = (bruglesco::canvas_height - rows * 128.f) / (rows + 1);
-	double x = padding_x;
-	double y = padding_y;
+	float padding_x = (bruglesco::canvas_width - columns * 128.f) / (columns + 1);
+	float padding_y = (bruglesco::canvas_height - rows * 128.f) / (rows + 1);
+	float x = padding_x;
+	float y = padding_y;
 	unsigned counter = 1;
 	for (std::vector<sf::RectangleShape>::iterator card = deck.begin(); card != deck.end(); ++card)
 	{
@@ -212,7 +212,7 @@ void GameScreen::matchFailDelay()
 
 void GameScreen::endFailDelay()
 {
-	data.resetTurnCards();
+	data.resetDeck();
 }
 
 void GameScreen::moveMatched()
@@ -234,7 +234,7 @@ void GameScreen::moveMatched()
 		{
 			deck[data.getMatchedCards()[i]].setPosition(x, y);
 		}
-		data.resetTurnCards();
+		data.resetDeck();
 	}
 }
 
