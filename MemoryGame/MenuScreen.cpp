@@ -5,45 +5,45 @@ MenuScreen::MenuScreen(ModelData& data, GameScreen& game, sf::Font& font) :
 	game{ game },
 	font{ font }
 {
-	playButton.setPosition(play_button_x, play_button_y);
+	playButton.setPosition(bruglesco::play_button_x, bruglesco::play_button_y);
 	playButton.setFillColor(sf::Color(120, 120, 120, 255));
-	playString.setPosition(play_button_x + play_string_x_offset, play_button_y + play_string_y_offset);
+	playString.setPosition(bruglesco::play_button_x + bruglesco::play_string_x_offset, bruglesco::play_button_y + bruglesco::play_string_y_offset);
 	playString.setCharacterSize(150);
 	playString.setFillColor(sf::Color::Black);
 
-	sixPairs.setPosition(six_button_x, pair_button_y);
+	sixPairs.setPosition(bruglesco::six_button_x, bruglesco::pair_button_y);
 	sixPairs.setFillColor(sf::Color(120, 120, 120, 255));
-	sixString.setPosition(six_button_x + six_string_x_offset, pair_button_y);
+	sixString.setPosition(bruglesco::six_button_x + bruglesco::six_string_x_offset, bruglesco::pair_button_y);
 	sixString.setCharacterSize(100);
 	sixString.setFillColor(sf::Color::Red);
-	pairString[0].setPosition(six_button_x + pair_string_x_offset, pair_button_y + pair_string_y_offset);
+	pairString[0].setPosition(bruglesco::six_button_x + bruglesco::pair_string_x_offset, bruglesco::pair_button_y + bruglesco::pair_string_y_offset);
 	pairString[0].setCharacterSize(100);
 	pairString[0].setFillColor(sf::Color::Red);
 
-	eightPairs.setPosition(eight_button_x, pair_button_y);
+	eightPairs.setPosition(bruglesco::eight_button_x, bruglesco::pair_button_y);
 	eightPairs.setFillColor(sf::Color(120, 120, 120, 255));
-	eightString.setPosition(eight_button_x + eight_string_x_offset, pair_button_y);
+	eightString.setPosition(bruglesco::eight_button_x + bruglesco::eight_string_x_offset, bruglesco::pair_button_y);
 	eightString.setCharacterSize(100);
 	eightString.setFillColor(sf::Color::Black);
-	pairString[1].setPosition(eight_button_x + pair_string_x_offset, pair_button_y + pair_string_y_offset);
+	pairString[1].setPosition(bruglesco::eight_button_x + bruglesco::pair_string_x_offset, bruglesco::pair_button_y + bruglesco::pair_string_y_offset);
 	pairString[1].setCharacterSize(100);
 	pairString[1].setFillColor(sf::Color::Black);
 
-	twelvePairs.setPosition(twelve_button_x, pair_button_y);
+	twelvePairs.setPosition(bruglesco::twelve_button_x, bruglesco::pair_button_y);
 	twelvePairs.setFillColor(sf::Color(120, 120, 120, 255));
-	twelveString.setPosition(twelve_button_x + twelve_string_x_offset, pair_button_y);
+	twelveString.setPosition(bruglesco::twelve_button_x + bruglesco::twelve_string_x_offset, bruglesco::pair_button_y);
 	twelveString.setCharacterSize(100);
 	twelveString.setFillColor(sf::Color::Black);
-	pairString[2].setPosition(twelve_button_x + pair_string_x_offset, pair_button_y + pair_string_y_offset);
+	pairString[2].setPosition(bruglesco::twelve_button_x + bruglesco::pair_string_x_offset, bruglesco::pair_button_y + bruglesco::pair_string_y_offset);
 	pairString[2].setCharacterSize(100);
 	pairString[2].setFillColor(sf::Color::Black);
 
-	sixteenPairs.setPosition(sixteen_button_x, pair_button_y);
+	sixteenPairs.setPosition(bruglesco::sixteen_button_x, bruglesco::pair_button_y);
 	sixteenPairs.setFillColor(sf::Color(120, 120, 120, 255));
-	sixteenString.setPosition(sixteen_button_x + sixteen_string_x_offset, pair_button_y);
+	sixteenString.setPosition(bruglesco::sixteen_button_x + bruglesco::sixteen_string_x_offset, bruglesco::pair_button_y);
 	sixteenString.setCharacterSize(100);
 	sixteenString.setFillColor(sf::Color::Black);
-	pairString[3].setPosition(sixteen_button_x + pair_string_x_offset, pair_button_y + pair_string_y_offset);
+	pairString[3].setPosition(bruglesco::sixteen_button_x + bruglesco::pair_string_x_offset, bruglesco::pair_button_y + bruglesco::pair_string_y_offset);
 	pairString[3].setCharacterSize(100);
 	pairString[3].setFillColor(sf::Color::Black);
 }
@@ -52,27 +52,27 @@ void MenuScreen::trackMouse(const sf::Vector2f& mousePos)
 {
 	if (playButton.getGlobalBounds().contains(mousePos))
 	{
-		mouseIn = menuMouseIn::play;
+		mouseIn = bruglesco::menuMouseIn::play;
 	}
 	else if (sixPairs.getGlobalBounds().contains(mousePos))
 	{
-		mouseIn = menuMouseIn::six;
+		mouseIn = bruglesco::menuMouseIn::six;
 	}
 	else if (eightPairs.getGlobalBounds().contains(mousePos))
 	{
-		mouseIn = menuMouseIn::eight;
+		mouseIn = bruglesco::menuMouseIn::eight;
 	}
 	else if (twelvePairs.getGlobalBounds().contains(mousePos))
 	{
-		mouseIn = menuMouseIn::twelve;
+		mouseIn = bruglesco::menuMouseIn::twelve;
 	}
 	else if (sixteenPairs.getGlobalBounds().contains(mousePos))
 	{
-		mouseIn = menuMouseIn::sixteen;
+		mouseIn = bruglesco::menuMouseIn::sixteen;
 	}
 	else 
 	{
-		mouseIn = menuMouseIn::none;
+		mouseIn = bruglesco::menuMouseIn::none;
 	}
 }
 
@@ -83,26 +83,26 @@ void MenuScreen::input(const sf::Vector2f& mousePos)
 		data.setSize(deckSize);
 		data.play();
 		game.setGame();
-		mouseIn = menuMouseIn::none;
+		mouseIn = bruglesco::menuMouseIn::none;
 	}
 	else if (sixPairs.getGlobalBounds().contains(mousePos))
 	{
-		deckSize = DeckSize::six;
+		deckSize = bruglesco::DeckSize::six;
 		data.setSize(deckSize);
 	}
 	else if (eightPairs.getGlobalBounds().contains(mousePos))
 	{
-		deckSize = DeckSize::eight;
+		deckSize = bruglesco::DeckSize::eight;
 		data.setSize(deckSize);
 	}
 	else if (twelvePairs.getGlobalBounds().contains(mousePos))
 	{
-		deckSize = DeckSize::twelve;
+		deckSize = bruglesco::DeckSize::twelve;
 		data.setSize(deckSize);
 	}
 	else if (sixteenPairs.getGlobalBounds().contains(mousePos))
 	{
-		deckSize = DeckSize::sixteen;
+		deckSize = bruglesco::DeckSize::sixteen;
 		data.setSize(deckSize);
 	}
 }
@@ -132,7 +132,7 @@ void MenuScreen::draw(sf::RenderWindow& window)
 
 void MenuScreen::highlightButton()
 {
-	if (mouseIn == menuMouseIn::play)
+	if (mouseIn == bruglesco::menuMouseIn::play)
 	{
 		playButton.setFillColor(sf::Color(60, 60, 60, 255));
 		playString.setFillColor(sf::Color::Red);
@@ -143,13 +143,13 @@ void MenuScreen::highlightButton()
 		playString.setFillColor(sf::Color::Black);
 	}
 
-	if (mouseIn == menuMouseIn::six)
+	if (mouseIn == bruglesco::menuMouseIn::six)
 	{
 		sixPairs.setFillColor(sf::Color(60, 60, 60, 255));
 		sixString.setFillColor(sf::Color::Red);
 		pairString[0].setFillColor(sf::Color::Red);
 	}
-	else if (deckSize == DeckSize::six)
+	else if (deckSize == bruglesco::DeckSize::six)
 	{
 		sixPairs.setFillColor(sf::Color(120, 120, 120, 255));
 		sixString.setFillColor(sf::Color::Red);
@@ -162,13 +162,13 @@ void MenuScreen::highlightButton()
 		pairString[0].setFillColor(sf::Color::Black);
 	}
 
-	if (mouseIn == menuMouseIn::eight)
+	if (mouseIn == bruglesco::menuMouseIn::eight)
 	{
 		eightPairs.setFillColor(sf::Color(60, 60, 60, 255));
 		eightString.setFillColor(sf::Color::Red);
 		pairString[1].setFillColor(sf::Color::Red);
 	}
-	else if (deckSize == DeckSize::eight)
+	else if (deckSize == bruglesco::DeckSize::eight)
 	{
 		eightPairs.setFillColor(sf::Color(120, 120, 120, 255));
 		eightString.setFillColor(sf::Color::Red);
@@ -181,13 +181,13 @@ void MenuScreen::highlightButton()
 		pairString[1].setFillColor(sf::Color::Black);
 	}
 
-	if (mouseIn == menuMouseIn::twelve)
+	if (mouseIn == bruglesco::menuMouseIn::twelve)
 	{
 		twelvePairs.setFillColor(sf::Color(60, 60, 60, 255));
 		twelveString.setFillColor(sf::Color::Red);
 		pairString[2].setFillColor(sf::Color::Red);
 	}
-	else if (deckSize == DeckSize::twelve)
+	else if (deckSize == bruglesco::DeckSize::twelve)
 	{
 		twelvePairs.setFillColor(sf::Color(120, 120, 120, 255));
 		twelveString.setFillColor(sf::Color::Red);
@@ -200,13 +200,13 @@ void MenuScreen::highlightButton()
 		pairString[2].setFillColor(sf::Color::Black);
 	}
 
-	if (mouseIn == menuMouseIn::sixteen)
+	if (mouseIn == bruglesco::menuMouseIn::sixteen)
 	{
 		sixteenPairs.setFillColor(sf::Color(60, 60, 60, 255));
 		sixteenString.setFillColor(sf::Color::Red);
 		pairString[3].setFillColor(sf::Color::Red);
 	}
-	else if (deckSize == DeckSize::sixteen)
+	else if (deckSize == bruglesco::DeckSize::sixteen)
 	{
 		sixteenPairs.setFillColor(sf::Color(120, 120, 120, 255));
 		sixteenString.setFillColor(sf::Color::Red);

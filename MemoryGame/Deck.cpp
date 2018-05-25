@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-void Deck::set(const DeckSize& deckSize)
+void Deck::set(const bruglesco::DeckSize& deckSize)
 {
 	deck.clear();
 	unsigned k = 0;
@@ -13,7 +13,7 @@ void Deck::set(const DeckSize& deckSize)
 		deck.push_back(Card(i));
 		++k;
 	}
-	std::shuffle(std::begin(deck), std::end(deck), generator);
+	std::shuffle(std::begin(deck), std::end(deck), bruglesco::generator);
 }
 
 void Deck::reset()
@@ -22,13 +22,13 @@ void Deck::reset()
 	matchedCards.clear();
 }
 
-CardState Deck::checkCards()
+bruglesco::CardState Deck::checkCards()
 {
 	unsigned count = 0;
 	std::vector<unsigned> indices;
 	for (unsigned i = 0; i < deck.size(); ++i)
 	{
-		if (deck[i].checkState() == CardState::checking)
+		if (deck[i].checkState() == bruglesco::CardState::checking)
 		{
 			++count;
 			indices.push_back(i);
@@ -42,19 +42,19 @@ CardState Deck::checkCards()
 			matchedCards = indices;
 			deck[indices[0]].match();
 			deck[indices[1]].match();
-			return CardState::matched;
+			return bruglesco::CardState::matched;
 		}
 		else
 		{
 			upCards = indices;
 			deck[indices[0]].reset();
 			deck[indices[1]].reset();
-			return CardState::unmatched;
+			return bruglesco::CardState::unmatched;
 		}
 	}
 	else
 	{
-		return CardState::checking;
+		return bruglesco::CardState::checking;
 	}
 }
 
@@ -62,7 +62,7 @@ bool Deck::checkWin()
 {
 	for (std::vector<Card>::iterator card = deck.begin(); card != deck.end(); ++card)
 	{
-		if (card->checkState() != CardState::matched)
+		if (card->checkState() != bruglesco::CardState::matched)
 		{
 			return false;
 		}

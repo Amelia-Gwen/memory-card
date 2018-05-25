@@ -21,12 +21,12 @@ public:
 
 	void draw();
 private:
-	sf::RenderWindow window{ sf::VideoMode(screen_width, screen_height), "Memory" };
+	sf::RenderWindow window{ sf::VideoMode(bruglesco::screen_width, bruglesco::screen_height), "Memory" };
 	ModelData& data;
 	sf::Font font;
 	GameScreen game{ data, font };
 	MenuScreen menu{ data, game, font };
-	sf::RectangleShape background{ sf::Vector2f(static_cast<float>(screen_width), static_cast<float>(screen_height)) };
+	sf::RectangleShape background{ sf::Vector2f(static_cast<float>(bruglesco::screen_width), static_cast<float>(bruglesco::screen_height)) };
 };
 
 #endif // !BRUGLESCO_MEMORY_VIEWPORT_H

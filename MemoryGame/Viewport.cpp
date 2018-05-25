@@ -3,6 +3,7 @@
 Viewport::Viewport(ModelData& data) :
 	data{ data }
 {
+	window.setFramerateLimit(60);
 	font.loadFromFile("{PixelFlag}.ttf");
 	background.setFillColor(sf::Color(100, 100, 100, 255));
 }

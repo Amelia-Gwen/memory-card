@@ -1,6 +1,6 @@
 #include "ModelData.h"
 
-void ModelData::setSize(const DeckSize& size)
+void ModelData::setSize(const bruglesco::DeckSize& size)
 {
 	deckSize = size;
 }
@@ -66,22 +66,22 @@ void ModelData::quit()
 	menu = true;
 	p1Turn = true;
 	ended = false;
-	winner = winState::none;
+	winner = bruglesco::winState::none;
 }
 
 void ModelData::update()
 {
-	CardState deckState = deck.checkCards();
+	bruglesco::CardState deckState = deck.checkCards();
 	if (deck.checkWin() && !ended)
 	{
 		winner = pickWinner();
 		ended = true;
 	}
-	else if (deckState == CardState::matched)
+	else if (deckState == bruglesco::CardState::matched)
 	{
 		getPlayer().scorePoint();
 	}
-	else if (deckState == CardState::unmatched)
+	else if (deckState == bruglesco::CardState::unmatched)
 	{
 		p1Turn = !p1Turn;
 	}
@@ -92,18 +92,18 @@ void ModelData::dealDeck()
 	deck.set(deckSize);
 }
 
-winState ModelData::pickWinner()
+bruglesco::winState ModelData::pickWinner()
 {
 	if (players[0].getScore() == players[1].getScore())
 	{
-		return winState::draw;
+		return bruglesco::winState::draw;
 	}
 	else if (players[0].getScore() > players[1].getScore())
 	{
-		return winState::playerOne;
+		return bruglesco::winState::playerOne;
 	}
 	else
 	{
-		return winState::playerTwo;
+		return bruglesco::winState::playerTwo;
 	}
 }

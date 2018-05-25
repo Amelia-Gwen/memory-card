@@ -22,19 +22,19 @@ private:
 	ModelData& data;
 	GameScreen& game;
 	sf::Font& font;
-	sf::RectangleShape playButton{ sf::Vector2f(menu_button_width, menu_button_height) };
+	sf::RectangleShape playButton{ sf::Vector2f(bruglesco::menu_button_width, bruglesco::menu_button_height) };
 	sf::Text playString{ "Play", font };
-	sf::RectangleShape sixPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
+	sf::RectangleShape sixPairs{ sf::Vector2f(bruglesco::menu_button_width, bruglesco::menu_button_height) };
 	sf::Text sixString{ "Six", font };
-	sf::RectangleShape eightPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
+	sf::RectangleShape eightPairs{ sf::Vector2f(bruglesco::menu_button_width, bruglesco::menu_button_height) };
 	sf::Text eightString{ "Eight", font };
-	sf::RectangleShape twelvePairs{ sf::Vector2f(menu_button_width, menu_button_height) };
+	sf::RectangleShape twelvePairs{ sf::Vector2f(bruglesco::menu_button_width, bruglesco::menu_button_height) };
 	sf::Text twelveString{ "Twelve", font };
-	sf::RectangleShape sixteenPairs{ sf::Vector2f(menu_button_width, menu_button_height) };
+	sf::RectangleShape sixteenPairs{ sf::Vector2f(bruglesco::menu_button_width, bruglesco::menu_button_height) };
 	sf::Text sixteenString{ "Sixteen", font };
 	std::vector<sf::Text> pairString{ 4, { "Pairs", font } };
-	menuMouseIn mouseIn{ menuMouseIn::none };
-	DeckSize deckSize{ DeckSize::six };
+	bruglesco::menuMouseIn mouseIn{ bruglesco::menuMouseIn::none };
+	bruglesco::DeckSize deckSize{ bruglesco::DeckSize::six };
 
 	void highlightButton();
 };

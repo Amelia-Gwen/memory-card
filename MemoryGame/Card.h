@@ -10,7 +10,7 @@ public:
 
 	unsigned getMatch() const;
 
-	CardState checkState() const;
+	bruglesco::CardState checkState() const;
 
 	void flip();
 
@@ -19,7 +19,7 @@ public:
 	void reset();
 private:
 	unsigned matchNum;
-	CardState cardState{ CardState::unmatched };
+	bruglesco::CardState cardState{ bruglesco::CardState::unmatched };
 	bool faceUp{ false };
 };
 

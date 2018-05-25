@@ -19,8 +19,8 @@ public:
 private:
 	ModelData& data;
 	sf::Font& font;
-	sf::RectangleShape playerOneDisplay{ sf::Vector2f(display_width, display_height) };
-	sf::RectangleShape playerTwoDisplay{ sf::Vector2f(display_width, display_height) };
+	sf::RectangleShape playerOneDisplay{ sf::Vector2f(bruglesco::display_width, bruglesco::display_height) };
+	sf::RectangleShape playerTwoDisplay{ sf::Vector2f(bruglesco::display_width, bruglesco::display_height) };
 	unsigned playerOneScore{ 0 };
 	sf::Text playerOne{ "Player One: " + std::to_string(playerOneScore), font };
 	unsigned playerTwoScore{ 0 };

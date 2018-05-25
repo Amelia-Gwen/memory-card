@@ -6,28 +6,28 @@ GameScreen::GameScreen(ModelData& data, sf::Font& font) :
 {
 	if (!cardMap.loadFromFile("spritesheet.png"))
 	{
-		debuggStream << "you aren't loading your textures"; // remove for release
+		bruglesco::debuggStream << "you aren't loading your textures"; // remove for release
 	}
-	pauseButton.setPosition(pause_x, 0);
+	pauseButton.setPosition(bruglesco::pause_x, 0);
 	pauseButton.setFillColor(sf::Color(120, 120, 120, 255));
-	pauseString.setPosition(pause_x + pause_offset, 0);
+	pauseString.setPosition(bruglesco::pause_x + bruglesco::pause_offset, 0);
 	pauseString.setCharacterSize(50);
 	pauseString.setFillColor(sf::Color::Black);
-	returnToMain.setPosition(reset_x, 0);
+	returnToMain.setPosition(bruglesco::reset_x, 0);
 	returnToMain.setFillColor(sf::Color(120, 120, 120, 255));
-	resetString.setPosition(reset_x + reset_offset, 0);
+	resetString.setPosition(bruglesco::reset_x + bruglesco::reset_offset, 0);
 	resetString.setCharacterSize(50);
 	resetString.setFillColor(sf::Color::Black);
 	pauseForeground.setFillColor(sf::Color(120, 120, 120, 120));
-	endGameForeground.setPosition(win_x, win_y);
+	endGameForeground.setPosition(bruglesco::win_x, bruglesco::win_y);
 	endGameForeground.setFillColor(sf::Color(90, 90, 90, 180));
-	winString.setPosition(winstring_x, winstring_y);
+	winString.setPosition(bruglesco::winstring_x, bruglesco::winstring_y);
 	winString.setCharacterSize(250);
 	winString.setFillColor(sf::Color::Green);
-	playerWinString.setPosition(player_winstring_x, player_winstring_y);
+	playerWinString.setPosition(bruglesco::player_winstring_x, bruglesco::player_winstring_y);
 	playerWinString.setCharacterSize(250);
 	playerWinString.setFillColor(sf::Color::Green);
-	for (unsigned i = 0; i < max_pairs; ++i)
+	for (unsigned i = 0; i < bruglesco::max_pairs; ++i)
 	{
 		imageIdentifiers.push_back(i);
 	}
@@ -35,7 +35,7 @@ GameScreen::GameScreen(ModelData& data, sf::Font& font) :
 
 void GameScreen::setGame()
 {
-	std::shuffle(std::begin(imageIdentifiers), std::end(imageIdentifiers), generator);
+	std::shuffle(std::begin(imageIdentifiers), std::end(imageIdentifiers), bruglesco::generator);
 	makeCards();
 	positionCards();
 }
@@ -44,15 +44,15 @@ void GameScreen::trackMouse(const sf::Vector2f& mousePos)
 {
 	if (pauseButton.getGlobalBounds().contains(mousePos))
 	{
-		mouseIn = gameMouseIn::pause;
+		mouseIn = bruglesco::gameMouseIn::pause;
 	}
 	else if (returnToMain.getGlobalBounds().contains(mousePos))
 	{
-		mouseIn = gameMouseIn::reset;
+		mouseIn = bruglesco::gameMouseIn::reset;
 	}
 	else 
 	{
-		mouseIn = gameMouseIn::none;
+		mouseIn = bruglesco::gameMouseIn::none;
 	}
 }
 
@@ -60,7 +60,10 @@ void GameScreen::input(const sf::Vector2f& mousePos)
 {
 	if (pauseButton.getGlobalBounds().contains(mousePos))
 	{
-		paused = !paused;
+		if (!data.isOver())
+		{
+			paused = !paused;
+		}
 	}
 	else if (!paused && returnToMain.getGlobalBounds().contains(mousePos))
 	{
@@ -133,10 +136,10 @@ void GameScreen::makeCards()
 	unsigned k = 0;
 	for (std::vector<Card>::iterator card = data.getDeck().begin(); card != data.getDeck().end(); ++card)
 	{
-		deck.push_back(sf::RectangleShape(sf::Vector2f(card_width, card_height)));
+		deck.push_back(sf::RectangleShape(sf::Vector2f(bruglesco::card_width, bruglesco::card_height)));
 		deck[k].setTexture(&cardMap);
-		//deck[k].setTextureRect(sf::IntRect());
-		deck[k].setFillColor(sf::Color::Black); // to be removed
+		deck[k].setTextureRect(sf::IntRect(2048, 0, static_cast<int>(bruglesco::card_width), static_cast<int>(bruglesco::card_height)));
+		deck[k].setFillColor(sf::Color::White);
 		++k;
 	}
 }
@@ -153,10 +156,10 @@ void GameScreen::positionCards()
 	}
 	unsigned columns = deck.size() / rows;
 
-	float padding_x = (canvas_width - columns * 128.f) / (columns + 1);
-	float padding_y = (canvas_height - rows * 128.f) / (rows + 1);
-	float x = padding_x;
-	float y = padding_y;
+	double padding_x = (bruglesco::canvas_width - columns * 128.f) / (columns + 1);
+	double padding_y = (bruglesco::canvas_height - rows * 128.f) / (rows + 1);
+	double x = padding_x;
+	double y = padding_y;
 	unsigned counter = 1;
 	for (std::vector<sf::RectangleShape>::iterator card = deck.begin(); card != deck.end(); ++card)
 	{
@@ -164,20 +167,20 @@ void GameScreen::positionCards()
 		if (counter < columns)
 		{
 			++counter;
-			x += padding_x + card_width;
+			x += padding_x + bruglesco::card_width;
 		}
 		else
 		{
 			counter = 1;
 			x = padding_x;
-			y += padding_y + card_height;
+			y += padding_y + bruglesco::card_height;
 		}
 	}
 }
 
 void GameScreen::highlightButtons()
 {
-	if (paused || mouseIn == gameMouseIn::pause)
+	if (paused || mouseIn == bruglesco::gameMouseIn::pause)
 	{
 		pauseButton.setFillColor(sf::Color(60, 60, 60, 255));
 		pauseString.setFillColor(sf::Color::Red);
@@ -188,7 +191,7 @@ void GameScreen::highlightButtons()
 		pauseString.setFillColor(sf::Color::Black);
 	}
 
-	if (mouseIn == gameMouseIn::reset)
+	if (mouseIn == bruglesco::gameMouseIn::reset)
 	{
 		returnToMain.setFillColor(sf::Color(60, 60, 60, 255));
 		resetString.setFillColor(sf::Color::Red);
@@ -204,7 +207,7 @@ void GameScreen::matchFailDelay()
 {
 	if (delay == 0 && data.getFailedCards().size() == 2)
 	{
-		delay = 800;
+		delay = 300;
 	}
 }
 
@@ -217,15 +220,15 @@ void GameScreen::moveMatched()
 {
 	if (data.getMatchedCards().size() == 2)
 	{
-		float x = player_card_x + player_card_x_offset * data.getPlayer().getScore();
+		float x = bruglesco::player_card_x + bruglesco::player_card_x_offset * data.getPlayer().getScore();
 		float y;
 		if (data.playerOneTurn())
 		{
-			y = player_one_card_y;
+			y = bruglesco::player_one_card_y;
 		}
 		else
 		{
-			y = player_two_card_y;
+			y = bruglesco::player_two_card_y;
 		}
 
 		for (unsigned i = 0; i < data.getMatchedCards().size(); ++i)
@@ -240,17 +243,17 @@ void GameScreen::highlightCards()
 {
 	for (unsigned i = 0; i < data.getDeck().size(); ++i)
 	{
-		if (data.getDeck()[i].checkState() == CardState::unmatched)
+		if (data.getDeck()[i].checkState() == bruglesco::CardState::unmatched)
 		{
-			deck[i].setFillColor(sf::Color::Black);
+			deck[i].setTextureRect(sf::IntRect(2048, 0, static_cast<int>(bruglesco::card_width), static_cast<int>(bruglesco::card_height)));
 		}
 		else
 		{
-			deck[i].setFillColor(sf::Color::Green);
+			deck[i].setTextureRect(sf::IntRect(imageIdentifiers[data.getDeck()[i].getMatch()] * 128, 0, static_cast<int>(bruglesco::card_width), static_cast<int>(bruglesco::card_height)));
 		}
 	}
 	for (unsigned i = 0; i < data.getFailedCards().size(); ++i)
 	{
-		deck[data.getFailedCards()[i]].setFillColor(sf::Color::Green);
+		deck[data.getFailedCards()[i]].setTextureRect(sf::IntRect(imageIdentifiers[data.getDeck()[data.getFailedCards()[i]].getMatch()] * 128, 0, static_cast<int>(bruglesco::card_width), static_cast<int>(bruglesco::card_height)));
 	}
 }

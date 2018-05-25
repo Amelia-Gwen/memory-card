@@ -9,27 +9,27 @@ unsigned Card::getMatch() const
 	return matchNum;
 }
 
-CardState Card::checkState() const
+bruglesco::CardState Card::checkState() const
 {
 	return cardState;
 }
 
 void Card::flip()
 {
-	if (cardState == CardState::unmatched)
+	if (cardState == bruglesco::CardState::unmatched)
 	{
-		cardState = CardState::checking;
+		cardState = bruglesco::CardState::checking;
 		faceUp = true;
 	}
 }
 
 void Card::match()
 {
-	cardState = CardState::matched;
+	cardState = bruglesco::CardState::matched;
 }
 
 void Card::reset()
 {
-	cardState = CardState::unmatched;
+	cardState = bruglesco::CardState::unmatched;
 	faceUp = false;
 }

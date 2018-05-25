@@ -8,7 +8,7 @@
 class ModelData
 {
 public:
-	void setSize(const DeckSize& size);
+	void setSize(const bruglesco::DeckSize& size);
 
 	Player& getPlayer();
 
@@ -35,14 +35,14 @@ private:
 	bool menu{ true };
 	std::vector<Player> players{ 1, 2 };
 	Deck deck;
-	DeckSize deckSize{ DeckSize::six };
-	winState winner{ winState::none };
+	bruglesco::DeckSize deckSize{ bruglesco::DeckSize::six };
+	bruglesco::winState winner{ bruglesco::winState::none };
 	bool p1Turn{ true };
 	bool ended{ false };
 
 	void dealDeck();
 
-	winState pickWinner();
+	bruglesco::winState pickWinner();
 };
 
 #endif // !BRUGLESCO_MEMORY_MODELDATA_H

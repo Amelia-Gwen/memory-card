@@ -10,11 +10,11 @@
 class Deck
 {
 public:
-	void set(const DeckSize& deckSize);
+	void set(const bruglesco::DeckSize& deckSize);
 
 	void reset();
 
-	CardState checkCards();
+	bruglesco::CardState checkCards();
 
 	bool checkWin();
 
