@@ -1,4 +1,4 @@
-// Main defines the entry point of the application
+/// Main defines the entry point of the application
 
 #include "Memory.h"
 

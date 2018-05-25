@@ -47,7 +47,7 @@ bool ModelData::playerOneTurn() const
 	return p1Turn;
 }
 
-void ModelData::resetTurnCards()
+void ModelData::resetDeck()
 {
 	deck.reset();
 }
