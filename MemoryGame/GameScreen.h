@@ -55,7 +55,7 @@ private:
 
 	void moveMatched();
 
-	void highlightCards(); // to be removed
+	void highlightCards(); // to be repurposed
 };
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H

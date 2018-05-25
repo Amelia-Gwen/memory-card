@@ -4,6 +4,10 @@ GameScreen::GameScreen(ModelData& data, sf::Font& font) :
 	data{ data },
 	font{ font }
 {
+	if (!cardMap.loadFromFile("spritesheet.png"))
+	{
+		debuggStream << "you aren't loading your textures"; // remove for release
+	}
 	pauseButton.setPosition(pause_x, 0);
 	pauseButton.setFillColor(sf::Color(120, 120, 120, 255));
 	pauseString.setPosition(pause_x + pause_offset, 0);
