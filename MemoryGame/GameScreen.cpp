@@ -87,7 +87,7 @@ void GameScreen::update()
 	highlightButtons();
 	matchFailDelay();
 	moveMatched();
-	highlightCards(); // to be removed
+	adjustTexture();
 	hud.update();
 
 	if (delay == 1)
@@ -139,7 +139,6 @@ void GameScreen::makeCards()
 		deck.push_back(sf::RectangleShape(sf::Vector2f(bruglesco::card_width, bruglesco::card_height)));
 		deck[k].setTexture(&cardMap);
 		deck[k].setTextureRect(sf::IntRect(2048, 0, static_cast<int>(bruglesco::card_width), static_cast<int>(bruglesco::card_height)));
-		deck[k].setFillColor(sf::Color::White);
 		++k;
 	}
 }
@@ -239,7 +238,7 @@ void GameScreen::moveMatched()
 	}
 }
 
-void GameScreen::highlightCards()
+void GameScreen::adjustTexture()
 {
 	for (unsigned i = 0; i < data.getDeck().size(); ++i)
 	{
