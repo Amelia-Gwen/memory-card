@@ -38,7 +38,6 @@ void GameScreen::setGame()
 	std::shuffle(std::begin(imageIdentifiers), std::end(imageIdentifiers), bruglesco::generator);
 	makeCards();
 	positionCards();
-	z_index_indices.clear();
 }
 
 void GameScreen::trackMouse(const sf::Vector2f& mousePos)
@@ -69,6 +68,9 @@ void GameScreen::input(const sf::Vector2f& mousePos)
 	else if (!paused && returnToMain.getGlobalBounds().contains(mousePos))
 	{
 		data.quit();
+		z_index_indices.clear();
+		delay = 0;
+		data.resetDeck();
 	}
 	else if (!paused && delay == 0)
 	{
@@ -102,7 +104,21 @@ void GameScreen::update()
 
 	if (data.isOver())
 	{
-		playerWinString.setString("Player " + std::to_string(data.getPlayer().getIdentity()));
+		if (data.whoWon() == bruglesco::winState::draw)
+		{
+			winString.setString("Draw");
+			playerWinString.setString("");
+		}
+		else if (data.whoWon() == bruglesco::winState::playerOne)
+		{
+			winString.setString("Winner");
+			playerWinString.setString("Player 1");
+		}
+		else if (data.whoWon() == bruglesco::winState::playerTwo)
+		{
+			winString.setString("Winner");
+			playerWinString.setString("Player 2");
+		}
 	}
 }
 

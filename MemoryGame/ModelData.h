@@ -24,6 +24,8 @@ public:
 	///returns 2 unsigned ints that represent the indices in the deck of cards
 	std::vector<unsigned>& getMatchedCards();
 
+	bruglesco::winState whoWon() const;
+
 	bool isMenu() const;
 
 	bool isOver() const;
@@ -42,10 +44,13 @@ private:
 	std::vector<Player> players{ 1, 2 };
 	Deck deck;
 	bruglesco::DeckSize deckSize{ bruglesco::DeckSize::six };
+	bruglesco::winState winner{ bruglesco::winState::none };
 	bool p1Turn{ true };
 	bool ended{ false };
 
 	void dealDeck();
+
+	bruglesco::winState pickWinner();
 };
 
 #endif // !BRUGLESCO_MEMORY_MODELDATA_H

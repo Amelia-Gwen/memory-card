@@ -106,6 +106,14 @@ namespace bruglesco {
 		pause,
 		reset
 	};
+
+	enum class winState
+	{
+		none,
+		draw,
+		playerOne,
+		playerTwo
+	};
 }
 
 #endif // !BRUGLESCO_MEMORY_EXPRESSIONS_H

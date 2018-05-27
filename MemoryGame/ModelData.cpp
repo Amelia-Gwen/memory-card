@@ -32,6 +32,11 @@ std::vector<unsigned>& ModelData::getMatchedCards()
 	return deck.getMatchedCards();
 }
 
+bruglesco::winState ModelData::whoWon() const
+{
+	return winner;
+}
+
 bool ModelData::isMenu() const
 {
 	return menu;
@@ -81,6 +86,7 @@ void ModelData::update()
 	}
 	else if (deck.checkWin() && !ended)
 	{
+		winner = pickWinner();
 		ended = true;
 	}
 }
@@ -88,4 +94,20 @@ void ModelData::update()
 void ModelData::dealDeck()
 {
 	deck.set(deckSize);
+}
+
+bruglesco::winState ModelData::pickWinner()
+{
+	if (players[0].getScore() == players[1].getScore())
+	{
+		return bruglesco::winState::draw;
+	}
+	else if (players[0].getScore() > players[1].getScore())
+	{
+		return bruglesco::winState::playerOne;
+	}
+	else
+	{
+		return bruglesco::winState::playerTwo;
+	}
 }
