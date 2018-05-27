@@ -56,8 +56,8 @@ namespace bruglesco {
 	constexpr float player_one_string_y = 72.f;
 	constexpr float player_two_string_y = 440.f;
 
-	constexpr float player_card_x = 1265.f;
-	constexpr float player_card_x_offset = 15.f;
+	constexpr float player_card_x = 1250.f;
+	constexpr float player_card_x_offset = 10.f;
 	constexpr float player_one_card_y = 120.f;
 	constexpr float player_two_card_y = 488.f;
 

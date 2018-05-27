@@ -124,6 +124,7 @@ void MenuScreen::draw(sf::RenderWindow& window)
 	window.draw(twelveString);
 	window.draw(sixteenPairs);
 	window.draw(sixteenString);
+	// switch to auto range loop?
 	for (std::vector<sf::Text>::iterator string = pairString.begin(); string != pairString.end(); ++string)
 	{
 		window.draw(*string);

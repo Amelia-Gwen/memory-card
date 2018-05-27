@@ -2,7 +2,7 @@
 #define BRUGLESCO_MEMORY_MEMORY_H
 
 /// Memory represents the entire application. It constain a Data object and a Viewport.
-///It uses the Update Method to cycle the game 1 frame at a time.
+/// It uses the Update Method to cycle the game 1 frame at a time.
 
 #include "Expressions.h"
 #include "ModelData.h"

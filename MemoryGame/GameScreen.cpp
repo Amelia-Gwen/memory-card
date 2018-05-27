@@ -206,7 +206,7 @@ void GameScreen::matchFailDelay()
 {
 	if (delay == 0 && data.getFailedCards().size() == 2)
 	{
-		delay = 300;
+		delay = 180;
 	}
 }
 
