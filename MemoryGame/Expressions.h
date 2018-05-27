@@ -8,7 +8,6 @@ namespace bruglesco {
 
 	static std::random_device rd;
 	static std::mt19937 generator(rd());
-	static std::ofstream debuggStream("DebugLog.txt"); // remove for release
 
 	constexpr unsigned screen_width = 1500u;
 	constexpr unsigned screen_height = 800u;

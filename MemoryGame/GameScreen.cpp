@@ -6,7 +6,7 @@ GameScreen::GameScreen(ModelData& data, sf::Font& font) :
 {
 	if (!cardMap.loadFromFile("spritesheet.png"))
 	{
-		bruglesco::debuggStream << "you aren't loading your textures"; // remove for release
+
 	}
 	pauseButton.setPosition(bruglesco::pause_x, 0);
 	pauseButton.setFillColor(sf::Color(120, 120, 120, 255));
