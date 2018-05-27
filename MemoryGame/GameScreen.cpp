@@ -38,6 +38,7 @@ void GameScreen::setGame()
 	std::shuffle(std::begin(imageIdentifiers), std::end(imageIdentifiers), bruglesco::generator);
 	makeCards();
 	positionCards();
+	z_index_indices.clear();
 }
 
 void GameScreen::trackMouse(const sf::Vector2f& mousePos)
@@ -112,9 +113,16 @@ void GameScreen::draw(sf::RenderWindow& window)
 	window.draw(returnToMain);
 	window.draw(resetString);
 	hud.draw(window);
-	for (std::vector<sf::RectangleShape>::iterator card = deck.begin(); card != deck.end(); ++card)
+	for (unsigned i = 0; i < data.getDeck().size(); ++i)
 	{
-		window.draw(*card);
+		if (data.getDeck()[i].checkState() != bruglesco::CardState::matched)
+		{
+			window.draw(deck[i]);
+		}
+	}
+	for (unsigned i = 0; i < z_index_indices.size(); ++i)
+	{
+		window.draw(deck[z_index_indices[i]]);
 	}
 	
 	if (paused)
@@ -233,6 +241,7 @@ void GameScreen::moveMatched()
 		for (unsigned i = 0; i < data.getMatchedCards().size(); ++i)
 		{
 			deck[data.getMatchedCards()[i]].setPosition(x, y);
+			z_index_indices.push_back(data.getMatchedCards()[i]);
 		}
 		data.resetDeck();
 	}

@@ -39,9 +39,10 @@ private:
 	sf::Text playerWinString{ "", font };
 	std::vector<sf::RectangleShape> deck;
 	bruglesco::gameMouseIn mouseIn{ bruglesco::gameMouseIn::none };
-	bool paused{ false };
 	std::vector<unsigned> imageIdentifiers;
+	std::vector<unsigned> z_index_indices;
 	unsigned delay{ 0 };
+	bool paused{ false };
 
 	void makeCards();
 
