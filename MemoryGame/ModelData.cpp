@@ -66,18 +66,12 @@ void ModelData::quit()
 	menu = true;
 	p1Turn = true;
 	ended = false;
-	winner = bruglesco::winState::none;
 }
 
 void ModelData::update()
 {
 	bruglesco::CardState deckState = deck.checkCards();
-	if (deck.checkWin() && !ended)
-	{
-		winner = pickWinner();
-		ended = true;
-	}
-	else if (deckState == bruglesco::CardState::matched)
+	if (deckState == bruglesco::CardState::matched)
 	{
 		getPlayer().scorePoint();
 	}
@@ -85,25 +79,13 @@ void ModelData::update()
 	{
 		p1Turn = !p1Turn;
 	}
+	else if (deck.checkWin() && !ended)
+	{
+		ended = true;
+	}
 }
 
 void ModelData::dealDeck()
 {
 	deck.set(deckSize);
-}
-
-bruglesco::winState ModelData::pickWinner()
-{
-	if (players[0].getScore() == players[1].getScore())
-	{
-		return bruglesco::winState::draw;
-	}
-	else if (players[0].getScore() > players[1].getScore())
-	{
-		return bruglesco::winState::playerOne;
-	}
-	else
-	{
-		return bruglesco::winState::playerTwo;
-	}
 }
