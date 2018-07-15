@@ -3,21 +3,25 @@
 
 #include "Expressions.h"
 
-class Player
-{
-public:
-	Player(unsigned identity);
+namespace memory {
 
-	void scorePoint();
+	class Player
+	{
+	public:
+		Player(unsigned identity);
 
-	void reset();
+		void scorePoint();
 
-	unsigned getIdentity() const;
+		void reset();
 
-	unsigned getScore() const;
-private:
-	unsigned identity;
-	unsigned score{ 0 };
-};
+		unsigned getIdentity() const;
+
+		unsigned getScore() const;
+	private:
+		unsigned identity;
+		unsigned score{ 0 };
+	};
+
+}
 
 #endif // !BRUGLESCO_MEMORY_PLAYER_H

@@ -1,35 +1,39 @@
 #include "Card.h"
 
-Card::Card(unsigned matchNum) :
-	matchNum{ matchNum }
-{}
+namespace memory {
 
-unsigned Card::getMatch() const
-{
-	return matchNum;
-}
+	Card::Card(unsigned matchNum) :
+		matchNum{ matchNum }
+	{}
 
-bruglesco::CardState Card::checkState() const
-{
-	return cardState;
-}
-
-void Card::flip()
-{
-	if (cardState == bruglesco::CardState::unmatched)
+	unsigned Card::getMatch() const
 	{
-		cardState = bruglesco::CardState::checking;
-		faceUp = true;
+		return matchNum;
 	}
-}
 
-void Card::match()
-{
-	cardState = bruglesco::CardState::matched;
-}
+	CardState Card::checkState() const
+	{
+		return cardState;
+	}
 
-void Card::reset()
-{
-	cardState = bruglesco::CardState::unmatched;
-	faceUp = false;
+	void Card::flip()
+	{
+		if (cardState == CardState::unmatched)
+		{
+			cardState = CardState::checking;
+			faceUp = true;
+		}
+	}
+
+	void Card::match()
+	{
+		cardState = CardState::matched;
+	}
+
+	void Card::reset()
+	{
+		cardState = CardState::unmatched;
+		faceUp = false;
+	}
+
 }

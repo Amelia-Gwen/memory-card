@@ -4,7 +4,7 @@
 #include <fstream>
 #include <random>
 
-namespace bruglesco {
+namespace memory {
 
 	static std::random_device rd;
 	static std::mt19937 generator(rd());
@@ -113,6 +113,7 @@ namespace bruglesco {
 		playerOne,
 		playerTwo
 	};
+
 }
 
 #endif // !BRUGLESCO_MEMORY_EXPRESSIONS_H

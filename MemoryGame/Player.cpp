@@ -1,26 +1,30 @@
 #include "Player.h"
 
-Player::Player(unsigned identity) :
-	identity{ identity }
-{
-}
+namespace memory {
 
-void Player::scorePoint()
-{
-	++score;
-}
+	Player::Player(unsigned identity) :
+		identity{ identity }
+	{
+	}
 
-void Player::reset()
-{
-	score = 0;
-}
+	void Player::scorePoint()
+	{
+		++score;
+	}
 
-unsigned Player::getIdentity() const
-{
-	return identity;
-}
+	void Player::reset()
+	{
+		score = 0;
+	}
 
-unsigned Player::getScore() const
-{
-	return score;
+	unsigned Player::getIdentity() const
+	{
+		return identity;
+	}
+
+	unsigned Player::getScore() const
+	{
+		return score;
+	}
+
 }

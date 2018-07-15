@@ -10,53 +10,57 @@
 
 #include <vector>
 
-class GameScreen
-{
-public:
-	GameScreen(ModelData& data, sf::Font& font);
+namespace memory {
 
-	void setGame();
+	class GameScreen
+	{
+	public:
+		GameScreen(ModelData& data, sf::Font& font);
 
-	void trackMouse(const sf::Vector2f& mousePos);
+		void setGame();
 
-	void input(const sf::Vector2f& mousePos);
+		void trackMouse(const sf::Vector2f& mousePos);
 
-	void update();
+		void input(const sf::Vector2f& mousePos);
 
-	void draw(sf::RenderWindow& window);
-private:
-	ModelData& data;
-	sf::Font& font;
-	sf::Texture cardMap;
-	sf::RectangleShape pauseButton{ sf::Vector2f(bruglesco::game_button_width, bruglesco::game_button_height) };
-	sf::Text pauseString{ "Pause", font };
-	sf::RectangleShape returnToMain{ sf::Vector2f(bruglesco::game_button_width, bruglesco::game_button_height) };
-	sf::Text resetString{ "Return", font };
-	HUDisplay hud{ data, font };
-	sf::RectangleShape pauseForeground{ sf::Vector2f(static_cast<float>(bruglesco::screen_width), static_cast<float>(bruglesco::screen_height)) };
-	sf::RectangleShape endGameForeground{ sf::Vector2f(bruglesco::win_width, bruglesco::win_height) };
-	sf::Text winString{ "Winner", font };
-	sf::Text playerWinString{ "", font };
-	std::vector<sf::RectangleShape> deck;
-	bruglesco::gameMouseIn mouseIn{ bruglesco::gameMouseIn::none };
-	std::vector<unsigned> imageIdentifiers;
-	std::vector<unsigned> z_index_indices;
-	unsigned delay{ 0 };
-	bool paused{ false };
+		void update();
 
-	void makeCards();
+		void draw(sf::RenderWindow& window);
+	private:
+		ModelData & data;
+		sf::Font& font;
+		sf::Texture cardMap;
+		sf::RectangleShape pauseButton{ sf::Vector2f(game_button_width, game_button_height) };
+		sf::Text pauseString{ "Pause", font };
+		sf::RectangleShape returnToMain{ sf::Vector2f(game_button_width, game_button_height) };
+		sf::Text resetString{ "Return", font };
+		HUDisplay hud{ data, font };
+		sf::RectangleShape pauseForeground{ sf::Vector2f(static_cast<float>(screen_width), static_cast<float>(screen_height)) };
+		sf::RectangleShape endGameForeground{ sf::Vector2f(win_width, win_height) };
+		sf::Text winString{ "Winner", font };
+		sf::Text playerWinString{ "", font };
+		std::vector<sf::RectangleShape> deck;
+		gameMouseIn mouseIn{ gameMouseIn::none };
+		std::vector<unsigned> imageIdentifiers;
+		std::vector<unsigned> z_index_indices;
+		unsigned delay{ 0 };
+		bool paused{ false };
 
-	void positionCards();
+		void makeCards();
 
-	void highlightButtons();
+		void positionCards();
 
-	void matchFailDelay();
+		void highlightButtons();
 
-	void endFailDelay();
+		void matchFailDelay();
 
-	void moveMatched();
+		void endFailDelay();
 
-	void adjustTexture();
-};
+		void moveMatched();
+
+		void adjustTexture();
+	};
+
+}
 
 #endif // !BRUGLESCO_MEMORY_GAMESCREEN_H

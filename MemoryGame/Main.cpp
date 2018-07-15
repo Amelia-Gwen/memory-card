@@ -2,8 +2,8 @@
 
 #include "Memory.h"
 
-int main()
-{
-	Memory memory;
-	memory.run();
-}
+	int main()
+	{
+		memory::Memory memory;
+		memory.run();
+	}

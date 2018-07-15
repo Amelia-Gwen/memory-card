@@ -3,24 +3,28 @@
 
 #include "Expressions.h"
 
-class Card
-{
-public:
-	Card(unsigned matchNum);
+namespace memory {
 
-	unsigned getMatch() const;
+	class Card
+	{
+	public:
+		Card(unsigned matchNum);
 
-	bruglesco::CardState checkState() const;
+		unsigned getMatch() const;
 
-	void flip();
+		CardState checkState() const;
 
-	void match();
+		void flip();
 
-	void reset();
-private:
-	unsigned matchNum;
-	bruglesco::CardState cardState{ bruglesco::CardState::unmatched };
-	bool faceUp{ false };
-};
+		void match();
+
+		void reset();
+	private:
+		unsigned matchNum;
+		CardState cardState{ CardState::unmatched };
+		bool faceUp{ false };
+	};
+
+}
 
 #endif // !BRUGLESCO_MEMORY_CARD_H

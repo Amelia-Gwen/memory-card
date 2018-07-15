@@ -10,20 +10,24 @@
 
 #include <SFML\Graphics.hpp>
 
-class Memory
-{
-public:
-	void run();
-private:
-	ModelData data;
-	Viewport view{ data };
-	bool playing{ true };
+namespace memory {
 
-	void input();
+	class Memory
+	{
+	public:
+		void run();
+	private:
+		ModelData data;
+		Viewport view{ data };
+		bool playing{ true };
 
-	void update();
+		void input();
 
-	void draw();
-};
+		void update();
+
+		void draw();
+	};
+
+}
 
 #endif // !BRUGLESCO_MEMORY_MEMORY_H

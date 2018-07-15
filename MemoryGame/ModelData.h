@@ -8,49 +8,53 @@
 #include "Expressions.h"
 #include "Player.h"
 
-class ModelData
-{
-public:
-	/// setter to change the size of the game - should only be used outside of normal play and before starting a new game.
-	void setSize(const bruglesco::DeckSize& size);
+namespace memory {
 
-	Player& getPlayer();
+	class ModelData
+	{
+	public:
+		/// setter to change the size of the game - should only be used outside of normal play and before starting a new game.
+		void setSize(const DeckSize& size);
 
-	std::vector<Card>& getDeck();
+		Player& getPlayer();
 
-	///returns 2 unsigned ints that represent the indices in the deck of cards
-	std::vector<unsigned>& getFailedCards();
+		std::vector<Card>& getDeck();
 
-	///returns 2 unsigned ints that represent the indices in the deck of cards
-	std::vector<unsigned>& getMatchedCards();
+		///returns 2 unsigned ints that represent the indices in the deck of cards
+		std::vector<unsigned>& getFailedCards();
 
-	bruglesco::winState whoWon() const;
+		///returns 2 unsigned ints that represent the indices in the deck of cards
+		std::vector<unsigned>& getMatchedCards();
 
-	bool isMenu() const;
+		winState whoWon() const;
 
-	bool isOver() const;
+		bool isMenu() const;
 
-	bool playerOneTurn() const;
+		bool isOver() const;
 
-	void resetDeck();
+		bool playerOneTurn() const;
 
-	void play();
+		void resetDeck();
 
-	void quit();
+		void play();
 
-	void update();
-private:
-	bool menu{ true };
-	std::vector<Player> players{ 1, 2 };
-	Deck deck;
-	bruglesco::DeckSize deckSize{ bruglesco::DeckSize::six };
-	bruglesco::winState winner{ bruglesco::winState::none };
-	bool p1Turn{ true };
-	bool ended{ false };
+		void quit();
 
-	void dealDeck();
+		void update();
+	private:
+		bool menu{ true };
+		std::vector<Player> players{ 1, 2 };
+		Deck deck;
+		DeckSize deckSize{ DeckSize::six };
+		winState winner{ winState::none };
+		bool p1Turn{ true };
+		bool ended{ false };
 
-	bruglesco::winState pickWinner();
-};
+		void dealDeck();
+
+		winState pickWinner();
+	};
+
+}
 
 #endif // !BRUGLESCO_MEMORY_MODELDATA_H

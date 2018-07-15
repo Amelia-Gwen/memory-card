@@ -7,28 +7,32 @@
 
 #include <vector>
 
-class Deck
-{
-public:
-	void set(const bruglesco::DeckSize& deckSize);
+namespace memory {
 
-	void reset();
+	class Deck
+	{
+	public:
+		void set(const DeckSize& deckSize);
 
-	bruglesco::CardState checkCards();
+		void reset();
 
-	bool checkWin();
+		CardState checkCards();
 
-	std::vector<Card>& getCards();
+		bool checkWin();
 
-	std::vector<unsigned>& getFailedCards();
+		std::vector<Card>& getCards();
 
-	std::vector<unsigned>& getMatchedCards();
+		std::vector<unsigned>& getFailedCards();
 
-	void clear();
-private:
-	std::vector<Card> deck;
-	std::vector<unsigned> upCards;
-	std::vector<unsigned> matchedCards;
-};
+		std::vector<unsigned>& getMatchedCards();
+
+		void clear();
+	private:
+		std::vector<Card> deck;
+		std::vector<unsigned> upCards;
+		std::vector<unsigned> matchedCards;
+	};
+
+}
 
 #endif // !BRUGLESCO_MEMORY_DECK_H
