@@ -126,10 +126,9 @@ namespace memory {
 		window.draw(twelveString);
 		window.draw(sixteenPairs);
 		window.draw(sixteenString);
-		// switch to auto range loop?
-		for (std::vector<sf::Text>::iterator string = pairString.begin(); string != pairString.end(); ++string)
+		for (auto& string : pairString)
 		{
-			window.draw(*string);
+			window.draw(string);
 		}
 	}
 

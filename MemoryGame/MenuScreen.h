@@ -12,6 +12,7 @@ namespace memory {
 	class MenuScreen
 	{
 	public:
+		MenuScreen() = delete;
 		MenuScreen(ModelData& data, GameScreen& game, sf::Font& font);
 
 		void trackMouse(const sf::Vector2f& mousePos);
