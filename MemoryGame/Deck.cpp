@@ -7,13 +7,10 @@ namespace memory {
 	void Deck::set(const DeckSize& deckSize)
 	{
 		deck.clear();
-		unsigned k = 0;
-		for (unsigned i = 0; i < static_cast<unsigned>(deckSize); ++i)
+		for (auto i = 0; i < static_cast<unsigned>(deckSize); ++i)
 		{
 			deck.push_back(Card(i));
-			++k;
 			deck.push_back(Card(i));
-			++k;
 		}
 		std::shuffle(std::begin(deck), std::end(deck), generator);
 	}
@@ -28,7 +25,7 @@ namespace memory {
 	{
 		unsigned count = 0;
 		std::vector<unsigned> indices;
-		for (unsigned i = 0; i < deck.size(); ++i)
+		for (auto i = 0; i < deck.size(); ++i)
 		{
 			if (deck[i].checkState() == CardState::checking)
 			{
@@ -60,11 +57,11 @@ namespace memory {
 		}
 	}
 
-	bool Deck::checkWin()
+	bool Deck::checkWin() const
 	{
-		for (std::vector<Card>::iterator card = deck.begin(); card != deck.end(); ++card)
+		for (auto& card : deck)
 		{
-			if (card->checkState() != CardState::matched)
+			if (card.checkState() != CardState::matched)
 			{
 				return false;
 			}

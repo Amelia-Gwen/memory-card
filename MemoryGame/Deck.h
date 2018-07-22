@@ -17,7 +17,7 @@ namespace memory {
 
 		CardState checkCards();
 
-		bool checkWin();
+		bool checkWin() const;
 
 		std::vector<Card>& getCards();
 
