@@ -160,7 +160,7 @@ namespace memory {
 	{
 		deck.clear();
 		unsigned k = 0;
-		for (std::vector<Card>::iterator card = data.getDeck().begin(); card != data.getDeck().end(); ++card)
+		for (auto& card : data.getDeck())
 		{
 			deck.push_back(sf::RectangleShape(sf::Vector2f(card_width, card_height)));
 			deck[k].setTexture(&cardMap);
@@ -172,7 +172,7 @@ namespace memory {
 	void GameScreen::positionCards()
 	{
 		unsigned rows = 0;
-		for (unsigned i = 2; i * i <= deck.size(); ++i)
+		for (auto i = 2; i * i <= deck.size(); ++i)
 		{
 			if (deck.size() % i == 0)
 			{
@@ -186,9 +186,9 @@ namespace memory {
 		float x = padding_x;
 		float y = padding_y;
 		unsigned counter = 1;
-		for (std::vector<sf::RectangleShape>::iterator card = deck.begin(); card != deck.end(); ++card)
+		for (auto& card : deck)
 		{
-			card->setPosition(x, y);
+			card.setPosition(x, y);
 			if (counter < columns)
 			{
 				++counter;
@@ -232,7 +232,7 @@ namespace memory {
 	{
 		if (delay == 0 && data.getFailedCards().size() == 2)
 		{
-			delay = 180;
+			delay = 120;
 		}
 	}
 
@@ -267,7 +267,7 @@ namespace memory {
 
 	void GameScreen::adjustTexture()
 	{
-		for (unsigned i = 0; i < data.getDeck().size(); ++i)
+		for (auto i = 0; i < data.getDeck().size(); ++i)
 		{
 			if (data.getDeck()[i].checkState() == CardState::unmatched)
 			{
@@ -278,7 +278,7 @@ namespace memory {
 				deck[i].setTextureRect(sf::IntRect(imageIdentifiers[data.getDeck()[i].getMatch()] * 128, 0, static_cast<int>(card_width), static_cast<int>(card_height)));
 			}
 		}
-		for (unsigned i = 0; i < data.getFailedCards().size(); ++i)
+		for (auto i = 0; i < data.getFailedCards().size(); ++i)
 		{
 			deck[data.getFailedCards()[i]].setTextureRect(sf::IntRect(imageIdentifiers[data.getDeck()[data.getFailedCards()[i]].getMatch()] * 128, 0, static_cast<int>(card_width), static_cast<int>(card_height)));
 		}
