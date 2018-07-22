@@ -8,7 +8,8 @@ namespace memory {
 	class Card
 	{
 	public:
-		Card(unsigned matchNum);
+		Card() = delete;
+		explicit Card(unsigned matchNum);
 
 		unsigned getMatch() const;
 
