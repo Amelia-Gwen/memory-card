@@ -7,7 +7,7 @@ namespace memory {
 	{
 	public:
 		Player() = delete;
-		explicit Player(unsigned identity);
+		Player(unsigned identity);
 
 		void scorePoint();
 

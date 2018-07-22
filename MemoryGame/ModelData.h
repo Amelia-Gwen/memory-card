@@ -52,7 +52,7 @@ namespace memory {
 
 		void dealDeck();
 
-		winState pickWinner();
+		winState pickWinner() const;
 	};
 
 }

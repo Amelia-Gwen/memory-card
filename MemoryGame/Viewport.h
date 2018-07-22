@@ -13,6 +13,7 @@ namespace memory {
 	class Viewport
 	{
 	public:
+		Viewport() = delete;
 		Viewport(ModelData& data);
 
 		bool isOpen() const;

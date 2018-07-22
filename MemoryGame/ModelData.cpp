@@ -98,7 +98,7 @@ namespace memory {
 		deck.set(deckSize);
 	}
 
-	winState ModelData::pickWinner()
+	winState ModelData::pickWinner() const
 	{
 		if (players[0].getScore() == players[1].getScore())
 		{

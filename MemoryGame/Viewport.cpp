@@ -24,7 +24,6 @@ namespace memory {
 
 		sf::Vector2f mousePos = sf::Vector2f(static_cast<float>(sf::Mouse::getPosition(window).x), static_cast<float>(sf::Mouse::getPosition(window).y));
 
-
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
