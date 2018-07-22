@@ -131,14 +131,14 @@ namespace memory {
 		window.draw(returnToMain);
 		window.draw(resetString);
 		hud.draw(window);
-		for (unsigned i = 0; i < data.getDeck().size(); ++i)
+		for (auto i = 0; i < data.getDeck().size(); ++i)
 		{
 			if (data.getDeck()[i].checkState() != CardState::matched)
 			{
 				window.draw(deck[i]);
 			}
 		}
-		for (unsigned i = 0; i < z_index_indices.size(); ++i)
+		for (auto i = 0; i < z_index_indices.size(); ++i)
 		{
 			window.draw(deck[z_index_indices[i]]);
 		}

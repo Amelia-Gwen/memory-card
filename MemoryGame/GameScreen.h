@@ -15,6 +15,7 @@ namespace memory {
 	class GameScreen
 	{
 	public:
+		GameScreen() = delete;
 		GameScreen(ModelData& data, sf::Font& font);
 
 		void setGame();
@@ -27,7 +28,7 @@ namespace memory {
 
 		void draw(sf::RenderWindow& window);
 	private:
-		ModelData & data;
+		ModelData& data;
 		sf::Font& font;
 		sf::Texture cardMap;
 		sf::RectangleShape pauseButton{ sf::Vector2f(game_button_width, game_button_height) };
