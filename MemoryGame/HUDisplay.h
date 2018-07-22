@@ -13,13 +13,14 @@ namespace memory {
 	class HUDisplay
 	{
 	public:
-		HUDisplay(ModelData& data, sf::Font& font);
+		HUDisplay() = delete;
+		explicit HUDisplay(ModelData& data, sf::Font& font);
 
 		void update();
 
 		void draw(sf::RenderWindow& window);
 	private:
-		ModelData & data;
+		ModelData& data;
 		sf::Font& font;
 		sf::RectangleShape playerOneDisplay{ sf::Vector2f(display_width, display_height) };
 		sf::RectangleShape playerTwoDisplay{ sf::Vector2f(display_width, display_height) };
