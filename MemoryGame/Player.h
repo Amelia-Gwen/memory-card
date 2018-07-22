@@ -6,7 +6,8 @@ namespace memory {
 	class Player
 	{
 	public:
-		Player(unsigned identity);
+		Player() = delete;
+		explicit Player(unsigned identity);
 
 		void scorePoint();
 
@@ -16,7 +17,7 @@ namespace memory {
 
 		unsigned getScore() const;
 	private:
-		unsigned identity;
+		const unsigned identity;
 		unsigned score{ 0 };
 	};
 
