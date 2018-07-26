@@ -13,7 +13,6 @@ namespace memory {
 	class HUDisplay
 	{
 	public:
-		HUDisplay() = delete;
 		explicit HUDisplay(ModelData& data, sf::Font& font);
 
 		void update();

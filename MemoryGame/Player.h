@@ -6,7 +6,6 @@ namespace memory {
 	class Player
 	{
 	public:
-		Player() = delete;
 		Player(unsigned identity);
 
 		void scorePoint();

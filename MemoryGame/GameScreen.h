@@ -15,7 +15,6 @@ namespace memory {
 	class GameScreen
 	{
 	public:
-		GameScreen() = delete;
 		GameScreen(ModelData& data, sf::Font& font);
 
 		void setGame();
