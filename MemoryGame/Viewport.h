@@ -13,7 +13,7 @@ namespace memory {
 	class Viewport
 	{
 	public:
-		Viewport(ModelData& data);
+		explicit Viewport(ModelData& data);
 
 		bool isOpen() const;
 

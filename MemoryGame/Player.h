@@ -6,7 +6,7 @@ namespace memory {
 	class Player
 	{
 	public:
-		Player(unsigned identity);
+		explicit Player(unsigned identity);
 
 		void scorePoint();
 

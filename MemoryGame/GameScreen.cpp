@@ -1,5 +1,7 @@
 #include "GameScreen.h"
 
+#include <iostream>
+
 namespace memory {
 
 	GameScreen::GameScreen(ModelData& data, sf::Font& font) :
@@ -8,7 +10,7 @@ namespace memory {
 	{
 		if (!cardMap.loadFromFile("spritesheet.png"))
 		{
-
+			std::cerr << "card images not loaded";
 		}
 		pauseButton.setPosition(pause_x, 0);
 		pauseButton.setFillColor(sf::Color(120, 120, 120, 255));
@@ -77,11 +79,11 @@ namespace memory {
 		else if (!paused && delay == 0)
 		{
 			for (std::pair<std::vector<Card>::iterator, std::vector<sf::RectangleShape>::iterator> card(data.getDeck().begin(), deck.begin());
-				card.first != data.getDeck().end() && card.second != deck.end(); ++card.first, ++card.second)
+				card.First != data.getDeck().end() && card.second != deck.end(); ++card.First, ++card.second)
 			{
 				if (card.second->getGlobalBounds().contains(mousePos))
 				{
-					card.first->flip();
+					card.First->flip();
 				}
 			}
 		}
@@ -180,8 +182,8 @@ namespace memory {
 		}
 		unsigned columns = deck.size() / rows;
 
-		float padding_x = (canvas_width - columns * 128.f) / (columns + 1);
-		float padding_y = (canvas_height - rows * 128.f) / (rows + 1);
+		float padding_x = (canvas_width - columns * 128.F) / (columns + 1);
+		float padding_y = (canvas_height - rows * 128.F) / (rows + 1);
 		float x = padding_x;
 		float y = padding_y;
 		unsigned counter = 1;
