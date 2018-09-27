@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>MemoryGame</ProjectName>
+  <ProjectLanguage>C++</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>74216262-4174-474a-84a7-d0616e4af92a</ProjectGuid>
+  <FullPath>C:\Developer\repos\memory-card\MemoryGame\MemoryGame.vcxproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\Developer\repos\memory-card\.sonarqube\out\0\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings />
+  <Configuration>Debug</Configuration>
+  <Platform>Win32</Platform>
+</ProjectInfo>

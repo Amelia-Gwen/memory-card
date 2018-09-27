@@ -73,7 +73,7 @@
 "env": [
 "=::=::\\",
 "=C:=C:\\Developer\\repos\\memory-card",
-"=ExitCode=00000000",
+"=ExitCode=00000001",
 "ALLUSERSPROFILE=C:\\ProgramData",
 "APPDATA=C:\\Users\\Andar\\AppData\\Roaming",
 "CAExcludePath=C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\atlmfc\\include;C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.15.26726\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\ucrt;;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.16299.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.6.1\\Include\\um;C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.6.1\\Include\\um;",
@@ -133,7 +133,7 @@
 "TRACKER_ENABLED=1",
 "TRACKER_INTERMEDIATE=C:\\Developer\\repos\\memory-card\\MemoryGame\\Debug\\MemoryGame.tlog",
 "TRACKER_OUTOFPROC=1",
-"TRACKER_RESPONSEFILE=C:\\Users\\Andar\\AppData\\Local\\Temp\\tmpbf0492a9c4834bc0bac701990f6af413.tmp",
+"TRACKER_RESPONSEFILE=C:\\Users\\Andar\\AppData\\Local\\Temp\\tmp551e73df82eb4213b8d88493146ad093.tmp",
 "TRACKER_ROOTFILES=",
 "TRACKER_TOOL=",
 "TRACKER_TOOLCHAIN=",
