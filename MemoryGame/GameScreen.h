@@ -8,6 +8,7 @@
 
 #include <SFML\Graphics.hpp>
 
+#include <cstddef>
 #include <vector>
 
 namespace memory {

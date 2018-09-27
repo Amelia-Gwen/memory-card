@@ -4,6 +4,7 @@
 #include "Card.h"
 #include "Expressions.h"
 
+#include <cstddef>
 #include <vector>
 
 namespace memory {

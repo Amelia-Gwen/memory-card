@@ -7,7 +7,7 @@ namespace memory {
 	void Deck::set(const DeckSize& deckSize)
 	{
 		deck.clear();
-		for (auto i = 0; i < static_cast<unsigned>(deckSize); ++i)
+		for (std::size_t i = 0; i < static_cast<unsigned>(deckSize); ++i)
 		{
 			deck.push_back(Card(i));
 			deck.push_back(Card(i));
@@ -25,7 +25,7 @@ namespace memory {
 	{
 		unsigned count = 0;
 		std::vector<unsigned> indices;
-		for (auto i = 0; i < deck.size(); ++i)
+		for (std::size_t i = 0; i < deck.size(); ++i)
 		{
 			if (deck[i].checkState() == CardState::checking)
 			{

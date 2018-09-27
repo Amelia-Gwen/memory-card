@@ -131,14 +131,14 @@ namespace memory {
 		window.draw(returnToMain);
 		window.draw(resetString);
 		hud.draw(window);
-		for (auto i = 0; i < data.getDeck().size(); ++i)
+		for (std::size_t i = 0; i < data.getDeck().size(); ++i)
 		{
 			if (data.getDeck()[i].checkState() != CardState::matched)
 			{
 				window.draw(deck[i]);
 			}
 		}
-		for (auto i = 0; i < z_index_indices.size(); ++i)
+		for (std::size_t i = 0; i < z_index_indices.size(); ++i)
 		{
 			window.draw(deck[z_index_indices[i]]);
 		}
@@ -159,20 +159,19 @@ namespace memory {
 	void GameScreen::makeCards()
 	{
 		deck.clear();
-		unsigned k = 0;
-		for (auto& card : data.getDeck())
+		for (std::size_t i = 0; i < data.getDeck().size(); ++i)
 		{
 			deck.push_back(sf::RectangleShape(sf::Vector2f(card_width, card_height)));
-			deck[k].setTexture(&cardMap);
-			deck[k].setTextureRect(sf::IntRect(2048, 0, static_cast<int>(card_width), static_cast<int>(card_height)));
-			++k;
+			deck[i].setTexture(&cardMap);
+			deck[i].setTextureRect(sf::IntRect(2048, 0, static_cast<int>(card_width), static_cast<int>(card_height)));
+			++i;
 		}
 	}
 
 	void GameScreen::positionCards()
 	{
 		unsigned rows = 0;
-		for (auto i = 2; i * i <= deck.size(); ++i)
+		for (std::size_t i = 2; i * i <= deck.size(); ++i)
 		{
 			if (deck.size() % i == 0)
 			{
@@ -256,7 +255,7 @@ namespace memory {
 				y = player_two_card_y;
 			}
 
-			for (unsigned i = 0; i < data.getMatchedCards().size(); ++i)
+			for (std::size_t i = 0; i < data.getMatchedCards().size(); ++i)
 			{
 				deck[data.getMatchedCards()[i]].setPosition(x, y);
 				z_index_indices.push_back(data.getMatchedCards()[i]);
@@ -267,7 +266,7 @@ namespace memory {
 
 	void GameScreen::adjustTexture()
 	{
-		for (auto i = 0; i < data.getDeck().size(); ++i)
+		for (std::size_t i = 0; i < data.getDeck().size(); ++i)
 		{
 			if (data.getDeck()[i].checkState() == CardState::unmatched)
 			{
@@ -278,7 +277,7 @@ namespace memory {
 				deck[i].setTextureRect(sf::IntRect(imageIdentifiers[data.getDeck()[i].getMatch()] * 128, 0, static_cast<int>(card_width), static_cast<int>(card_height)));
 			}
 		}
-		for (auto i = 0; i < data.getFailedCards().size(); ++i)
+		for (std::size_t i = 0; i < data.getFailedCards().size(); ++i)
 		{
 			deck[data.getFailedCards()[i]].setTextureRect(sf::IntRect(imageIdentifiers[data.getDeck()[data.getFailedCards()[i]].getMatch()] * 128, 0, static_cast<int>(card_width), static_cast<int>(card_height)));
 		}
