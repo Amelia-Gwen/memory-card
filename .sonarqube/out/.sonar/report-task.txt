@@ -1,7 +1,0 @@
-organization=bruglesco-github
-projectKey=bruglesco_memory-card
-serverUrl=https://sonarcloud.io
-serverVersion=7.4.0.17063
-dashboardUrl=https://sonarcloud.io/dashboard?id=bruglesco_memory-card
-ceTaskId=AWYcEvqvHR8j8dJrYQ_0
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWYcEvqvHR8j8dJrYQ_0
